@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:orientation="vertical" android:layout_width="match_parent"
+android:layout_height="match_parent">
+
+
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Paid Bill"
+    android:textSize="15sp"
+    android:background="@drawable/cdcdcd_cd"
+    android:padding="25dp"
+    android:layout_gravity="center_horizontal"
+    android:gravity="center"
+    android:textColor="#000"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginTop="5dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Unpaid Bill"
+        android:background="@drawable/cdcdcd_cd"
+        android:padding="25dp"
+        android:textSize="15sp"
+        android:textColor="#000"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="5dp"/>
+
+
+
+
+</LinearLayout>
