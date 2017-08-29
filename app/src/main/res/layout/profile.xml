@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/doorrr"
+            android:scaleType="centerCrop"
+            />
+
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/dard_shade"/>
+
+
+
+
+
+        <com.tbx.fitness.graphy.RoundedImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/ladka"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="140dp"
+            android:layout_marginStart="18dp"
+            android:text="Mukul Rawat"
+            android:textColor="#ffffff"
+            android:padding="5dp"/>
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="160dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="18dp"
+            android:text="Flat No.206"
+            android:textColor="#ffffff"
+            android:drawablePadding="10dp"
+            android:drawableEnd="@drawable/edit1"
+            android:padding="2dp"/>
+    </RelativeLayout>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/sliding_tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+</LinearLayout>

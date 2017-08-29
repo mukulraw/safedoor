@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:src="@drawable/sign"
+        android:scaleType="centerCrop"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="18dp"
+        android:textSize="35sp"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:text="Naque Porro quisquam est qui"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="18dp"
+        android:background="@color/colorPrimaryDark"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:text="SIGN IN"
+        android:textColor="#ffffff"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:textSize="20sp"/>
+</LinearLayout>

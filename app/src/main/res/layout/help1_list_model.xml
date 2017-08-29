@@ -4,6 +4,13 @@
     android:layout_height="match_parent">
 
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#acabab"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="5dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,8 +23,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:weightSum="2"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginStart="7dp"
+            android:layout_marginEnd="7dp"
             android:background="#ffffff">
 
 
@@ -79,12 +86,16 @@
             android:background="#ffffff"
            android:layout_gravity="center_horizontal"
             android:gravity="center"
-            android:paddingStart="18dp"
-            android:paddingEnd="18dp"
-            android:padding="5dp"
-            android:textStyle="bold"
+            android:textColor="#000"
             android:text="Lorem Ipsum is simply"
             />
 
     </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#acabab"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="5dp"/>
 </LinearLayout>

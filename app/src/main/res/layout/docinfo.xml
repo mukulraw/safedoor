@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="18dp"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="#ffffff"
+        android:text="DOCUMENTS"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="18dp"
+        android:textColor="#000"
+        android:padding="5dp"
+        android:textSize="10sp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:text="Aadhar Card*"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="5"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="7dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/black_cdcdcd"
+            android:layout_weight="3">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:drawableStart="@drawable/uparrow"
+                android:drawablePadding="5dp"
+                android:text="5623 1524 7845"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:layout_marginStart="5dp"
+            android:layout_gravity="center_vertical"
+            android:background="@color/colorPrimaryDark">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Upload Doc"
+                android:textColor="#ffffff"
+                android:gravity="center"
+                android:padding="5dp"
+                android:background="@color/colorPrimaryDark"
+                android:layout_gravity="center_vertical"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="18dp"
+        android:textSize="10sp"
+        android:padding="5dp"
+        android:textColor="#000"
+        android:paddingStart="10dp"
+        android:layout_marginTop="5dp"
+        android:paddingEnd="10dp"
+        android:text="Home Doc*"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="5"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="7dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/black_cdcdcd"
+            android:layout_weight="3">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:layout_marginStart="5dp"
+            android:layout_gravity="center_vertical"
+            android:background="@color/colorPrimaryDark">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Upload Doc"
+                android:textColor="#ffffff"
+                android:gravity="center"
+                android:padding="5dp"
+                android:background="@color/colorPrimaryDark"
+                android:layout_gravity="center_vertical"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/btn_round"
+        android:drawablePadding="10dp"
+        android:gravity="end"
+        android:layout_gravity="end"
+        android:layout_marginEnd="18dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/edit"/>
+
+</LinearLayout>

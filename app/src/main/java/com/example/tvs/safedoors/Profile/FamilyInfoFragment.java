@@ -1,4 +1,4 @@
-package com.example.tvs.safedoors.Accounting;
+package com.example.tvs.safedoors.Profile;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,15 +10,13 @@ import android.view.ViewGroup;
 import com.example.tvs.safedoors.R;
 
 
-
-public class UnpaidBill extends Fragment {
-
+public class FamilyInfoFragment extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.unpaid_bill, container,false);
-        return view;
+        View v = inflater.inflate(R.layout.family_info , container, false);
+        return v;
     }
 }
