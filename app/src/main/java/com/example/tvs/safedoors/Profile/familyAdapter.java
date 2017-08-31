@@ -8,9 +8,7 @@ import android.view.ViewGroup;
 
 import com.example.tvs.safedoors.R;
 
-/**
- * Created by TBX on 8/29/2017.
- */
+
 
 public class familyAdapter extends RecyclerView.Adapter<familyAdapter.myviewholder>{
 
@@ -33,7 +31,7 @@ public class familyAdapter extends RecyclerView.Adapter<familyAdapter.myviewhold
 
     @Override
     public int getItemCount() {
-        return 15;
+        return 5;
     }
 
     public class myviewholder extends RecyclerView.ViewHolder {

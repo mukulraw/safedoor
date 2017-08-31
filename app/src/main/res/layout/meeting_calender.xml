@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
 
 <LinearLayout
@@ -13,61 +13,18 @@
     android:layout_marginEnd="30dp"
     android:layout_marginTop="10dp">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Tuesday"
-        android:textColor="#ffffff"
-        android:background="#00796B"
-        android:textSize="15sp"
-        android:layout_gravity="center_vertical"
-        android:gravity="center"
-        android:padding="10dp"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="19"
-        android:textStyle="bold"
-        android:textSize="40sp"
-        android:textColor="#ffffff"
-        android:layout_gravity="center_vertical"
-        android:gravity="center"
-        />
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="JAN"
-        android:textSize="20sp"
-        android:textColor="#ffffff"
-        android:layout_gravity="center_vertical"
-        android:gravity="center" />
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="2016"
-        android:textColor="#ffffff"
-        android:textSize="20sp"
-        android:layout_gravity="center_vertical"
-        android:gravity="center"
-        android:layout_marginBottom="10dp"
-        />
-
-
 
 
 </LinearLayout>
 
-    <CalendarView
+    <DatePicker
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        ></CalendarView>
+        >
+
+    </DatePicker>
 
     <TextView
         android:layout_width="match_parent"

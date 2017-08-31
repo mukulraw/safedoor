@@ -10,11 +10,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
+
+        </activity>
+        <activity android:name=".HelpDesk.HelpOne" />
+        <activity android:name=".SplashLogin.Login" />
+        <activity android:name=".SplashLogin.GetStarted" />
+        <activity android:name=".SplashLogin.Register" />
+        <activity android:name=".SplashLogin.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+
         </activity>
     </application>
 

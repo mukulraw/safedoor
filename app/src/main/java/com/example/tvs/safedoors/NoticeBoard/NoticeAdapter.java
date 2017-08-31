@@ -1,6 +1,9 @@
 package com.example.tvs.safedoors.NoticeBoard;
 
 import android.content.Context;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,8 +37,25 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.MyViewHold
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
+
         public MyViewHolder(View itemView) {
             super(itemView);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    FragmentManager fragmentManager =((AppCompatActivity)context).getSupportFragmentManager();
+                    FragmentTransaction ft = fragmentManager.beginTransaction();
+                    NoticeBoard2 fragment = new NoticeBoard2();
+                    ft.replace(R.id.replace, fragment);
+                    ft.addToBackStack(null);
+                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
+                    ft.commit();
+
+
+                }
+            });
         }
     }
 }

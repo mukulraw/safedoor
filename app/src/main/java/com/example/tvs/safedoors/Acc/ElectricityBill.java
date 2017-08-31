@@ -1,4 +1,4 @@
-package com.example.tvs.safedoors.MeetingArragemenmt;
+package com.example.tvs.safedoors.Acc;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,49 +8,50 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.tvs.safedoors.MainActivity;
 import com.example.tvs.safedoors.R;
 
 
-public class Meeting extends Fragment {
-
-    LinearLayout layout1,linearLayout2,linearLayout3;
-
+public class ElectricityBill extends Fragment {
+    TextView paid ,unpaid;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.meeting , container , false);
-        layout1 = (LinearLayout)view.findViewById(R.id.meeting);
-        linearLayout2 = (LinearLayout)view.findViewById(R.id.starttime);
-        linearLayout3 = (LinearLayout)view.findViewById(R.id.endtime);
-        layout1.setOnClickListener(new View.OnClickListener() {
+        View view = inflater.inflate(R.layout.elctricitybill1 , container, false);
+        paid = (TextView)view.findViewById(R.id.paidbill);
+        unpaid = (TextView)view.findViewById(R.id.unpaidbill);
+
+        unpaid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FragmentManager fragmentManager =((MainActivity) getContext()).getSupportFragmentManager();
                 fragmentManager.popBackStack();
                 FragmentTransaction ft = fragmentManager.beginTransaction();
-                Meetingcalender fragment = new Meetingcalender();
+                UnpaidBill fragment = new UnpaidBill();
                 ft.replace(R.id.replace, fragment);
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
-                 ft.addToBackStack(null);
+               ft.addToBackStack(null);
                 ft.commit();
+
             }
         });
-
-        linearLayout2.setOnClickListener(new View.OnClickListener() {
+        paid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 FragmentManager fragmentManager =((MainActivity) getContext()).getSupportFragmentManager();
                 fragmentManager.popBackStack();
                 FragmentTransaction ft = fragmentManager.beginTransaction();
-                MeetingClock fragment = new MeetingClock();
+                BillType fragment = new BillType();
                 ft.replace(R.id.replace, fragment);
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
                 ft.addToBackStack(null);
                 ft.commit();
+
+
             }
         });
         return view;

@@ -29,6 +29,7 @@
         android:layout_marginBottom="5dp"
         android:layout_marginTop="5dp"
         android:padding="15dp"
+        android:id="@+id/meeting"
         android:background="@drawable/black_white"
         >
 
@@ -40,7 +41,7 @@
             android:padding="2dp"
             android:layout_gravity="center_vertical"
             android:layout_weight="1">
-    <EditText
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Date"
@@ -59,7 +60,7 @@
             android:layout_gravity="center_vertical"
             android:gravity="center"
             android:padding="2dp">
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="00/00/00"
@@ -107,6 +108,7 @@
         android:layout_marginBottom="5dp"
         android:layout_marginTop="5dp"
         android:padding="15dp"
+        android:id="@+id/starttime"
         android:background="@drawable/black_white"
         >
 
@@ -118,7 +120,7 @@
             android:padding="2dp"
             android:layout_gravity="center_vertical"
             android:layout_weight="1">
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Time"
@@ -137,7 +139,7 @@
             android:layout_gravity="center_vertical"
             android:gravity="center"
             android:padding="2dp">
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="12.00"
@@ -184,6 +186,7 @@
         android:layout_marginBottom="5dp"
         android:layout_marginEnd="20dp"
         android:padding="15dp"
+        android:id="@+id/endtime"
         android:background="@drawable/black_white"
         >
 
@@ -195,7 +198,7 @@
             android:padding="2dp"
             android:layout_gravity="center_vertical"
             android:layout_weight="1">
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Time"
@@ -214,7 +217,7 @@
             android:layout_gravity="center_vertical"
             android:gravity="center"
             android:padding="2dp">
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="12.00"
@@ -249,6 +252,10 @@
         android:textColor="#878686"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
+        android:layout_gravity="top"
+        android:paddingStart="18dp"
+        android:paddingTop="10dp"
+        android:gravity="top"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="80dp"
         android:text="Meeting Description :"

@@ -1,158 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="15dp"
+        android:orientation="vertical"
+        android:background="#009688"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginTop="15dp">
+        android:layout_marginTop="10dp">
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="19 JAN 2016"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="19 JAN 2016"
-            android:layout_gravity="end"
-            android:gravity="end"/>
     </LinearLayout>
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="15dp"
-    android:layout_marginStart="30dp"
-    android:layout_marginEnd="30dp"
-    android:background="#009688"
-    >
-
-    <LinearLayout
+    <TimePicker
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
         >
-<LinearLayout
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:layout_weight="1"
-    android:layout_gravity="center_vertical"
-    android:gravity="end"
-    android:padding="2dp"
-    android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="16:"
-            android:layout_gravity="center_vertical"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:textSize="35sp"
-            android:textColor="#cdcdcd"/>
-
-
-</LinearLayout>
-
-
-
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:padding="2dp"
-            android:layout_gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="20"
-                android:layout_gravity="center_vertical"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:textSize="35sp"
-                android:textColor="#ffffff"/>
-
-
-        </LinearLayout>
-
-
-
-    </LinearLayout>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Central Indian Standard Time"
-        android:textColor="#ffffff"
-        android:layout_gravity="center_vertical"
-        android:gravity="center"
-        android:padding="10dp"
-        android:textSize="15sp"
-        />
-
-</LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="18dp">
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="10dp"
-        android:layout_marginTop="50dp">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="CANCEL"
-        android:padding="2dp"
-        android:textColor="#000"
-        android:layout_gravity="center_vertical"
-        android:layout_marginStart="190dp"
-        android:layout_marginEnd="20dp"
-
-        />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="OK"
-            android:padding="2dp"
-            android:textColor="#000"
-            android:layout_gravity="center_vertical"
-            android:layout_marginEnd="20dp"
-
-            />
-    </LinearLayout>
+    </TimePicker>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#ffffff"
-        android:padding="18dp"
-        android:background="#FFCDD2"
         android:text="SUBMIT"
+        android:padding="15dp"
         android:layout_gravity="center_vertical"
         android:gravity="center"
-        android:textSize="15dp"
-        android:layout_marginTop="15dp"/>
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:background="#FFCDD2"/>
 
 </LinearLayout>

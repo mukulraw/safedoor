@@ -19,7 +19,6 @@ public class OtherAdapter extends RecyclerView.Adapter<OtherAdapter.myviewholder
     @Override
     public OtherAdapter.myviewholder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-
         View view = LayoutInflater.from(context).inflate(R.layout.other_list_model , parent , false);
         return new myviewholder(view);
     }
@@ -31,7 +30,7 @@ public class OtherAdapter extends RecyclerView.Adapter<OtherAdapter.myviewholder
 
     @Override
     public int getItemCount() {
-        return 15;
+        return 5;
     }
 
     public  class myviewholder extends RecyclerView.ViewHolder {

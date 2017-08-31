@@ -9,14 +9,14 @@ import android.view.ViewGroup;
 
 import com.example.tvs.safedoors.R;
 
-
-
 public class NoticeBoard2 extends Fragment {
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.notice_board2 , container , false);
-        return v;
+
+        View view = inflater.inflate(R.layout.notice_board2 , container , false);
+
+
+        return  view;
     }
 }

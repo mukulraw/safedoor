@@ -1,4 +1,4 @@
-package com.example.tvs.safedoors.Accounting;
+package com.example.tvs.safedoors.Acc;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

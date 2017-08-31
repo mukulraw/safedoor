@@ -1,6 +1,7 @@
 package com.example.tvs.safedoors.HelpDesk;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,9 +9,6 @@ import android.view.ViewGroup;
 
 import com.example.tvs.safedoors.R;
 
-/**
- * Created by tvs on 8/26/2017.
- */
 
 public class HelpDiskAdapeter extends RecyclerView.Adapter<HelpDiskAdapeter.MyViewHolder> {
 
@@ -24,7 +22,7 @@ public class HelpDiskAdapeter extends RecyclerView.Adapter<HelpDiskAdapeter.MyVi
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(context).inflate(R.layout.helpdesk_list_model,parent,false);
-        return null;
+        return new MyViewHolder(view);
     }
 
     @Override
@@ -34,12 +32,22 @@ public class HelpDiskAdapeter extends RecyclerView.Adapter<HelpDiskAdapeter.MyVi
 
     @Override
     public int getItemCount() {
-        return 0;
+        return 15;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
+
+
         public MyViewHolder(View itemView) {
             super(itemView);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    Intent intent = new Intent(context,HelpOne.class);
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 }

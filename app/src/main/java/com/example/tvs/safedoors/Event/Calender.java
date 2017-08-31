@@ -1,4 +1,4 @@
-package com.example.tvs.safedoors.Accounting;
+package com.example.tvs.safedoors.Event;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,14 +11,13 @@ import com.example.tvs.safedoors.R;
 
 
 
-public class UnpaidBill extends Fragment {
-
+public class Calender extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.unpaid_bill, container,false);
+        View view = inflater.inflate(R.layout.calender , container,false);
         return view;
     }
 }
