@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/SafeDoors.iml" filepath="$PROJECT_DIR$/.idea/SafeDoors.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SafeDoors.iml" filepath="$PROJECT_DIR$/SafeDoors.iml" />
+      <module fileurl="file://D:\AndroidStudioProjects\SafeDoors\SafeDoors\.idea\SafeDoors.iml" filepath="D:\AndroidStudioProjects\SafeDoors\SafeDoors\.idea\SafeDoors.iml" />
       <module fileurl="file://D:\GMS-Security-App\SafeDoors\SafeDoors.iml" filepath="D:\GMS-Security-App\SafeDoors\SafeDoors.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
