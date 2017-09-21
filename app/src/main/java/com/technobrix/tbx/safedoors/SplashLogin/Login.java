@@ -119,8 +119,6 @@ dialog.dismiss();
 
                     }
                 });
-
-
             }
         });
 
@@ -131,7 +129,6 @@ dialog.dismiss();
 
                 String e = mail.getText().toString();
                 String u = pass.getText().toString();
-
 
                 bar3.setVisibility(View.VISIBLE);
 

@@ -112,6 +112,15 @@
         android:drawableStart="@drawable/profile"
         android:text="Help Disk"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:id="@+id/discussion"
+        android:drawablePadding="10dp"
+        android:drawableStart="@drawable/profile"
+        android:text="Discussion Form"/>
+
 
     <TextView
         android:layout_width="match_parent"

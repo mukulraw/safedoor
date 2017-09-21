@@ -17,12 +17,13 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="10dp"
+            android:layout_gravity="center_vertical"
             android:layout_weight="1">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="1."/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1."/>
 
 
         </LinearLayout>
@@ -33,6 +34,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="10dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
             android:layout_weight="1">
 
             <TextView
@@ -48,13 +51,17 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="10dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
             android:layout_weight="1">
 
-            <TextView
+            <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Rs.600"
+                android:text="Book"
+                android:minHeight="30dp"
+                android:textColor="#fff"
+                android:background="@color/colorAccent"
                 android:gravity="center"
                 android:layout_gravity="center_vertical"/>
 

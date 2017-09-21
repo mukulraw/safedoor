@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     Toolbar toolbar;
     DrawerLayout drawer;
-    TextView accounting , notice , event , meeting , inventory , helpdisk , profile ;
+    TextView accounting , notice , event , meeting , inventory , helpdisk , profile , discuss;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         inventory = (TextView) findViewById(R.id.inventor);
         helpdisk = (TextView) findViewById(R.id.help);
         profile = (TextView) findViewById(R.id.profiled);
+        discuss = (TextView) findViewById(R.id.discussion);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         toolbar.setTitleTextColor(Color.WHITE);
@@ -114,6 +115,24 @@ public class MainActivity extends AppCompatActivity {
                 drawer.closeDrawer(GravityCompat.START);
             }
         });
+
+        discuss.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction ft = fragmentManager.beginTransaction();
+                HelpDesk fragment = new HelpDesk();
+                while (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+                    getSupportFragmentManager().popBackStackImmediate();
+                }
+                ft.replace(R.id.replace, fragment);
+                ft.addToBackStack(null);
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
+                ft.commit();
+                drawer.closeDrawer(GravityCompat.START);
+            }
+        });
+
         inventory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
