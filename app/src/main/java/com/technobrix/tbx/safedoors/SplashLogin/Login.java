@@ -149,6 +149,7 @@ dialog.dismiss();
 
                             bean b = (bean)getApplicationContext();
                             b.userId = response.body().getUserid();
+                            b.name = response.body().getSocityName();
                             Toast.makeText(Login.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                             Intent i = new Intent(Login.this, MainActivity.class);
                             bar3.setVisibility(View.GONE);

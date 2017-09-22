@@ -22,6 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
+        android:id="@+id/timepicker"
         >
 
     </TimePicker>
@@ -31,6 +32,7 @@
         android:layout_height="wrap_content"
         android:text="SUBMIT"
         android:padding="15dp"
+        android:id="@+id/submit"
         android:layout_gravity="center_vertical"
         android:gravity="center"
         android:textColor="#ffffff"

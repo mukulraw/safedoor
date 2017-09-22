@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
 
     <EditText
@@ -11,12 +15,12 @@
         android:text="Meeting title"
         android:textColor="#686767"
         android:padding="15dp"
+        android:id="@+id/meetingtitle"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="5dp"
         android:background="@drawable/black_white"/>
-
 
 
     <LinearLayout
@@ -45,6 +49,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Date"
+        android:id="@+id/text1"
         android:textColor="#686767"
         android:background="#ffffff"
 
@@ -64,6 +69,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="00/00/00"
+                android:id="@+id/tex2"
                 android:textColor="#686767"
                 android:background="#ffffff"
 
@@ -84,6 +90,7 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/calender"
                 android:padding="2dp"
+                android:id="@+id/calender"
 
                 />
         </LinearLayout>
@@ -108,7 +115,6 @@
         android:layout_marginBottom="5dp"
         android:layout_marginTop="5dp"
         android:padding="15dp"
-        android:id="@+id/starttime"
         android:background="@drawable/black_white"
         >
 
@@ -124,6 +130,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Time"
+                android:id="@+id/text4"
                 android:textColor="#686767"
                 android:background="#ffffff"
 
@@ -143,6 +150,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="12.00"
+                android:id="@+id/text5"
                 android:textColor="#686767"
                 android:background="#ffffff"
 
@@ -163,6 +171,7 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/calender"
                 android:padding="2dp"
+                android:id="@+id/calender1"
 
                 />
         </LinearLayout>
@@ -186,7 +195,6 @@
         android:layout_marginBottom="5dp"
         android:layout_marginEnd="20dp"
         android:padding="15dp"
-        android:id="@+id/endtime"
         android:background="@drawable/black_white"
         >
 
@@ -202,6 +210,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Time"
+                android:id="@+id/text7"
                 android:textColor="#686767"
                 android:background="#ffffff"
 
@@ -221,6 +230,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="12.00"
+                android:id="@+id/text8"
                 android:textColor="#686767"
                 android:background="#ffffff"
 
@@ -241,6 +251,7 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/clock"
                 android:padding="2dp"
+                android:id="@+id/clock"
 
                 />
         </LinearLayout>
@@ -253,9 +264,10 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_gravity="top"
-        android:paddingStart="18dp"
+        android:paddingStart ="18dp"
         android:paddingTop="10dp"
         android:gravity="top"
+        android:id="@+id/meeetingd"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="80dp"
         android:text="Meeting Description :"
@@ -268,7 +280,19 @@
         android:background="@color/colorAccent"
         android:padding="18dp"
         android:text="SUBMIT"
+        android:id="@+id/submit"
         android:layout_gravity="center_horizontal"
         android:gravity="center"
         android:textColor="#ffffff"/>
+
+
 </LinearLayout>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progress"
+        android:visibility="gone"
+        android:layout_centerInParent="true"
+        />
+</RelativeLayout>

@@ -15,6 +15,7 @@ public class bean extends Application {
     public String age = "";
     public String gender = "";
     public String address = "";
+    public String description = "";
 
 
 }

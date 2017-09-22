@@ -8,6 +8,22 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
+
+import com.technobrix.tbx.safedoors.FacilityPOJO.Bean;
+import com.technobrix.tbx.safedoors.FacilityPOJO.FacilityList;
+import com.technobrix.tbx.safedoors.LoginPOJO.LoginBean;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 
 public class Facility extends Fragment {
@@ -15,6 +31,8 @@ public class Facility extends Fragment {
     RecyclerView recyclerView;
     GridLayoutManager manager;
     FacilityAdapter adapter;
+    ProgressBar bar;
+    List<FacilityList> list;
 
     @Nullable
     @Override
@@ -23,10 +41,53 @@ public class Facility extends Fragment {
         View view = inflater.inflate(R.layout.facility , container , false);
 
         recyclerView = (RecyclerView)view.findViewById(R.id.facility);
+
+        bar = (ProgressBar) view.findViewById(R.id.progress);
+
         manager = new GridLayoutManager(getContext(),1);
-        adapter = new FacilityAdapter(getContext());
+
+        list = new ArrayList<>();
+
+        adapter = new FacilityAdapter(getContext(),list);
+
         recyclerView.setLayoutManager(manager);
+
         recyclerView.setAdapter(adapter);
+
+
+
+        bar.setVisibility(View.VISIBLE);
+
+
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://safedoors.in")
+                .addConverterFactory(ScalarsConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        AllApiInterface cr = retrofit.create(AllApiInterface.class);
+
+        Call<Bean> call = cr.bean("1");
+
+        call.enqueue(new Callback<Bean>() {
+            @Override
+            public void onResponse(Call<Bean> call, Response<Bean> response) {
+                bar.setVisibility(View.GONE);
+
+                adapter.setgriddata(response.body().getFacilityList());
+
+
+
+            }
+
+            @Override
+            public void onFailure(Call<Bean> call, Throwable t) {
+
+                bar.setVisibility(View.GONE);
+
+            }
+        });
         return view;
     }
 }

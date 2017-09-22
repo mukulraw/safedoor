@@ -1,8 +1,13 @@
 package com.technobrix.tbx.safedoors;
 
 
+import com.technobrix.tbx.safedoors.Create_MeetingPOJO.CreateBean;
+import com.technobrix.tbx.safedoors.FacilityPOJO.Bean;
 import com.technobrix.tbx.safedoors.ForgotPOJO.ForgotBean;
+import com.technobrix.tbx.safedoors.InventryListPOJO.InventoryBean;
 import com.technobrix.tbx.safedoors.LoginPOJO.LoginBean;
+import com.technobrix.tbx.safedoors.MeetingPOJO.MeetingBean;
+import com.technobrix.tbx.safedoors.NoticeListPOJO.NoticeBean;
 import com.technobrix.tbx.safedoors.ProfilePOJO.ProfileBean;
 import com.technobrix.tbx.safedoors.RegisterPOJO.RegisterBean;
 import com.technobrix.tbx.safedoors.SocityPOJO.SocityBean;
@@ -17,30 +22,49 @@ import retrofit2.http.Part;
 public interface AllApiInterface {
 
     @Multipart
-    @POST("http://safedoors.in/app_api/register.php")
+    @POST("app_api/register.php")
     Call<RegisterBean> bean(@Part("username") String user, @Part("email") String email , @Part("phone") String phone , @Part("socity_id") String socity , @Part("house_id") String house , @Part("password") String pass);
 
     @Multipart
-    @POST("http://safedoors.in/app_api/login.php")
+    @POST("app_api/login.php")
     Call<LoginBean> login(@Part("username") String user, @Part("password") String password);
 
 
     @Multipart
-    @POST("http://safedoors.in/app_api/forgot_password.php")
+    @POST("app_api/forgot_password.php")
     Call<ForgotBean> forgot(@Part("email") String e);
 
-    @GET("http://safedoors.in/app_api/socity_list.php")
+    @GET("app_api/socity_list.php")
     Call<SocityBean> sb();
 
     @Multipart
-    @POST("http://safedoors.in/app_api/house_list.php")
+    @POST("app_api/house_list.php")
     Call<flatBean> getFlats(@Part("socity_id") String e);
 
     @Multipart
-    @POST("http://safedoors.in/app_api/get_profile_info.php")
+    @POST("app_api/get_profile_info.php")
     Call<ProfileBean> getprofile(@Part("userid") String user);
 
 
+    @Multipart
+    @POST("app_api/facility_list.php")
+    Call<Bean> bean(@Part("socity_id") String id);
 
+    @Multipart
+    @POST("app_api/inventry_list.php")
+    Call<InventoryBean> inventory(@Part("socity_id") String id);
+
+    @Multipart
+    @POST("app_api/get_meeting_list.php")
+    Call<MeetingBean> meeting(@Part("socity_id") String id);
+
+
+    @Multipart
+    @POST("app_api/create_meeting.php")
+    Call<CreateBean> create(@Part("socity_id") String id, @Part("userid") String user , @Part("date") String date, @Part("time") String time , @Part("meeting_title") String meet , @Part("description") String des);
+
+    @Multipart
+    @POST("app_api/get_meeting_list.php")
+    Call<NoticeBean> notice(@Part("socity_id") String id);
 
 }
