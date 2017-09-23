@@ -55,8 +55,8 @@ public class Meeting extends Fragment {
         bar = (ProgressBar)view.findViewById(R.id.progress);
 
         title = (LinearLayout)view.findViewById(R.id.meeting);
-        starttime = (LinearLayout)view.findViewById(R.id.starttime);
-        endtime = (LinearLayout)view.findViewById(R.id.endtime);
+        /*starttime = (LinearLayout)view.findViewById(R.id.starttime);
+        endtime = (LinearLayout)view.findViewById(R.id.endtime);*/
         submit = (TextView)view.findViewById(R.id.submit);
 
         title.setOnClickListener(new View.OnClickListener() {
@@ -120,7 +120,7 @@ public class Meeting extends Fragment {
                         .build();
 
                 AllApiInterface cr = retrofit.create(AllApiInterface.class);
-                Call<CreateBean> call = cr.create(m , m1);
+                /*Call<CreateBean> call = cr.create(m , m1);
                 call.enqueue(new Callback<CreateBean>() {
                     @Override
                     public void onResponse(Call<CreateBean> call, Response<CreateBean> response) {
@@ -134,7 +134,7 @@ public class Meeting extends Fragment {
                         bar.setVisibility(View.GONE);
 
                     }
-                });
+                });*/
             }
         });
 

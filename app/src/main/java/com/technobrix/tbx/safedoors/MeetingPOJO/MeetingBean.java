@@ -6,7 +6,6 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class MeetingBean {
-
     @SerializedName("meeting_list")
     @Expose
     private List<MeetingList> meetingList = null;

@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <CalendarView
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+    <com.prolificinteractive.materialcalendarview.MaterialCalendarView
         android:id="@+id/calender"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></CalendarView>
+        android:layout_height="wrap_content"/>
 
 
     <TextView
@@ -19,7 +29,7 @@
         android:padding="15dp"
         android:layout_gravity="center_horizontal"
         android:gravity="center"
-        android:text="EVENTS DETAILS"/>
+        android:text="EVENT DETAILS"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -113,6 +123,7 @@
                 android:padding="5dp"
                 android:textStyle="bold"
                 android:textColor="#000"
+                android:id="@+id/day"
                 android:textSize="25sp"
                 android:layout_gravity="center"
                 android:gravity="center_horizontal"
@@ -122,6 +133,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="August 2017"
+                android:id="@+id/month"
                 android:layout_gravity="center"
                 android:gravity="center_horizontal"
                 />
@@ -140,13 +152,12 @@
 
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="35dp"
                 android:layout_marginEnd="2dp"
                 android:layout_marginStart="2dp"
-                android:layout_marginTop="35dp"
+                android:layout_gravity="center_vertical"
                 android:paddingEnd="10dp"
                 android:paddingStart="10dp"
                 android:text="Navratri"
@@ -159,6 +170,7 @@
                 android:layout_marginTop="15dp"
                 android:paddingStart="5dp"
                 android:paddingEnd="5dp"
+                android:id="@+id/desc"
                 android:layout_marginStart="2dp"
                 android:layout_marginEnd="2dp"
                 android:layout_marginBottom="15dp"/>
@@ -177,4 +189,18 @@
 
         </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+
+
+    </LinearLayout>
+
+    </ScrollView>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:id="@+id/progress"
+        android:visibility="gone"
+        />
+
+</RelativeLayout>

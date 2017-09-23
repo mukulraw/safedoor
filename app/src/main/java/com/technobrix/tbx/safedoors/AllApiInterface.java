@@ -4,6 +4,7 @@ package com.technobrix.tbx.safedoors;
 import com.technobrix.tbx.safedoors.Create_MeetingPOJO.CreateBean;
 import com.technobrix.tbx.safedoors.FacilityPOJO.Bean;
 import com.technobrix.tbx.safedoors.ForgotPOJO.ForgotBean;
+import com.technobrix.tbx.safedoors.HelpDeskPOJO.helpDeskBeam;
 import com.technobrix.tbx.safedoors.InventryListPOJO.InventoryBean;
 import com.technobrix.tbx.safedoors.LoginPOJO.LoginBean;
 import com.technobrix.tbx.safedoors.MeetingPOJO.MeetingBean;
@@ -65,6 +66,16 @@ public interface AllApiInterface {
 
     @Multipart
     @POST("app_api/get_meeting_list.php")
-    Call<NoticeBean> notice(@Part("socity_id") String id);
+    Call<MeetingBean> getMeetings(@Part("socity_id") String id);
+
+    @Multipart
+    @POST("app_api/view_metting_byid.php")
+    Call<meetingDetailBean> getMeetingDetails(@Part("socity_id") String socId , @Part("meeting_id") String  meetId);
+
+
+    @Multipart
+    @POST("app_api/get_help.php")
+    Call<helpDeskBeam> getHelpDesk(@Part("socity_id") String id);
 
 }
+

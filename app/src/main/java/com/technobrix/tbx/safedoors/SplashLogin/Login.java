@@ -77,44 +77,60 @@ public class Login extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
 
-                        Retrofit retrofit = new Retrofit.Builder()
-                                .baseUrl("http://safedoors.in")
-                                .addConverterFactory(ScalarsConverterFactory.create())
-                                .addConverterFactory(GsonConverterFactory.create())
-                                .build();
 
-                        AllApiInterface cr = retrofit.create(AllApiInterface.class);
-                        Call<ForgotBean> call = cr.forgot(em.getText().toString());
-                        call.enqueue(new Callback<ForgotBean>() {
-                            @Override
-                            public void onResponse(Call<ForgotBean> call, Response<ForgotBean> response) {
+                        String email = em.getText().toString();
+
+                        if (email.length()>0)
+                        {
+
+                            Retrofit retrofit = new Retrofit.Builder()
+                                    .baseUrl("http://safedoors.in")
+                                    .addConverterFactory(ScalarsConverterFactory.create())
+                                    .addConverterFactory(GsonConverterFactory.create())
+                                    .build();
+
+                            AllApiInterface cr = retrofit.create(AllApiInterface.class);
+                            Call<ForgotBean> call = cr.forgot(em.getText().toString());
+                            call.enqueue(new Callback<ForgotBean>() {
+                                @Override
+                                public void onResponse(Call<ForgotBean> call, Response<ForgotBean> response) {
 
 
-                                if (Objects.equals(response.body().getMessage(), "Please check your email")){
+                                    if (Objects.equals(response.body().getMessage(), "Please check your email")){
 
 
-                                    Toast.makeText(Login.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(Login.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
 
 
-                                    dialog.dismiss();
+                                        dialog.dismiss();
+
+
+                                    }
+                                    else {
+                                        Toast.makeText(Login.this, "Email id not correct", Toast.LENGTH_SHORT).show();
+                                        dialog.dismiss();
+                                    }
 
 
                                 }
-                                else {
-                                    Toast.makeText(Login.this, "Email id not correct", Toast.LENGTH_SHORT).show();
+
+                                @Override
+                                public void onFailure(Call<ForgotBean> call, Throwable t) {
+
                                     dialog.dismiss();
+
                                 }
+                            });
+
+                        }
+                        else
+                        {
+                            em.setError("Invalid Details");
+                            Toast.makeText(Login.this , "Invalid Email" , Toast.LENGTH_SHORT).show();
+                        }
 
 
-                            }
 
-                            @Override
-                            public void onFailure(Call<ForgotBean> call, Throwable t) {
-
-dialog.dismiss();
-
-                            }
-                        });
 
 
                     }
@@ -130,48 +146,71 @@ dialog.dismiss();
                 String e = mail.getText().toString();
                 String u = pass.getText().toString();
 
-                bar3.setVisibility(View.VISIBLE);
+                if (e.length()>0)
+                {
 
-                Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl("http://safedoors.in")
-                        .addConverterFactory(ScalarsConverterFactory.create())
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .build();
+                    if (u.length()>0)
+                    {
 
-                AllApiInterface cr = retrofit.create(AllApiInterface.class);
-                Call<LoginBean> call = cr.login( e , u);
-                call.enqueue(new Callback<LoginBean>() {
-                    @Override
-                    public void onResponse(Call<LoginBean> call, Response<LoginBean> response) {
+                        bar3.setVisibility(View.VISIBLE);
+
+                        Retrofit retrofit = new Retrofit.Builder()
+                                .baseUrl("http://safedoors.in")
+                                .addConverterFactory(ScalarsConverterFactory.create())
+                                .addConverterFactory(GsonConverterFactory.create())
+                                .build();
+
+                        AllApiInterface cr = retrofit.create(AllApiInterface.class);
+                        Call<LoginBean> call = cr.login( e , u);
+                        call.enqueue(new Callback<LoginBean>() {
+                            @Override
+                            public void onResponse(Call<LoginBean> call, Response<LoginBean> response) {
 
 
-                        if (Objects.equals(response.body().getMessage(), "Login success")){
+                                if (Objects.equals(response.body().getMessage(), "Login success")){
 
-                            bean b = (bean)getApplicationContext();
-                            b.userId = response.body().getUserid();
-                            b.name = response.body().getSocityName();
-                            Toast.makeText(Login.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                            Intent i = new Intent(Login.this, MainActivity.class);
-                            bar3.setVisibility(View.GONE);
-                            startActivity(i);
-                            finish();
-                            
-                        }
-                        else {
-                            Toast.makeText(Login.this, "Login detail invalid", Toast.LENGTH_SHORT).show();
-                            bar3.setVisibility(View.GONE);
-                        }
+                                    bean b = (bean)getApplicationContext();
+                                    b.userId = response.body().getUserid();
+                                    b.name = response.body().getSocityName();
+                                    b.socity = response.body().getSocityId();
+                                    Toast.makeText(Login.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                                    Intent i = new Intent(Login.this, MainActivity.class);
+                                    bar3.setVisibility(View.GONE);
+                                    startActivity(i);
+                                    finish();
 
+                                }
+                                else {
+                                    Toast.makeText(Login.this, "Login detail invalid", Toast.LENGTH_SHORT).show();
+                                    bar3.setVisibility(View.GONE);
+                                }
+
+
+                            }
+
+                            @Override
+                            public void onFailure(Call<LoginBean> call, Throwable t) {
+                                bar3.setVisibility(View.GONE);
+
+
+                            }
+                        });
 
                     }
-
-                    @Override
-                    public void onFailure(Call<LoginBean> call, Throwable t) {
-                        bar3.setVisibility(View.GONE);
-
-
+                    else
+                    {
+                        Toast.makeText(Login.this , "Invalid Password" , Toast.LENGTH_SHORT).show();
+                        pass.setError("Invalid Details");
                     }
-                });
+
+                }
+                else
+                {
+                    Toast.makeText(Login.this , "Invalid Email" , Toast.LENGTH_SHORT).show();
+                    mail.setError("Invalid Details");
+                }
+
+
 
 
 

@@ -19,6 +19,7 @@ import com.technobrix.tbx.safedoors.flatPOJO.flatBean;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -36,10 +37,10 @@ public class Register extends AppCompatActivity {
     List<String> soc_name;
     List<String> h_name;
     List<String> h_id;
-    String houseno = "";
+    String houseno = "" , socid = "";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         user = (EditText) findViewById(R.id.user);
@@ -115,12 +116,16 @@ bar2.setVisibility(View.GONE);
 
                     h_name.add("Select House");
 
+                    socid = soc_id.get(i-1);
+
                     bar2.setVisibility(View.VISIBLE);
                     Retrofit retrofit = new Retrofit.Builder()
                             .baseUrl("http://safedoors.in")
                             .addConverterFactory(ScalarsConverterFactory.create())
                             .addConverterFactory(GsonConverterFactory.create())
                             .build();
+
+
 
                     AllApiInterface cr = retrofit.create(AllApiInterface.class);
 
@@ -191,30 +196,109 @@ bar2.setVisibility(View.GONE);
                 String p = password.getText().toString();
                 String r = repass.getText().toString();
 
-                bar2.setVisibility(View.VISIBLE);
-                Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl("http://safedoors.in")
-                        .addConverterFactory(ScalarsConverterFactory.create())
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .build();
 
-                AllApiInterface cr = retrofit.create(AllApiInterface.class);
 
-                Call<RegisterBean> call = cr.bean( u ,e,p,"1",houseno,r);
-                call.enqueue(new Callback<RegisterBean>() {
-                    @Override
-                    public void onResponse(Call<RegisterBean> call, Response<RegisterBean> response) {
+                if (e.length()>0)
+                {
 
-                        Toast.makeText(Register.this,response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                        bar2.setVisibility(View.GONE);
+                    if (u.length()>0)
+                    {
+
+                        if (m.length()>0)
+                        {
+
+                            if (p.length()>0)
+                            {
+
+                                if (Objects.equals(p, r))
+                                {
+
+                                    bar2.setVisibility(View.VISIBLE);
+                                    Retrofit retrofit = new Retrofit.Builder()
+                                            .baseUrl("http://safedoors.in")
+                                            .addConverterFactory(ScalarsConverterFactory.create())
+                                            .addConverterFactory(GsonConverterFactory.create())
+                                            .build();
+
+                                    AllApiInterface cr = retrofit.create(AllApiInterface.class);
+
+                                    Call<RegisterBean> call = cr.bean( u ,e,p, socid ,houseno,r);
+                                    call.enqueue(new Callback<RegisterBean>() {
+                                        @Override
+                                        public void onResponse(Call<RegisterBean> call, Response<RegisterBean> response) {
+
+                                            if (response.body().getMessage() == "register successfully")
+                                            {
+                                                Toast.makeText(Register.this,response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                                                bar2.setVisibility(View.GONE);
+
+                                                finish();
+                                            }
+                                            else
+                                            {
+                                                Toast.makeText(Register.this,response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                                                bar2.setVisibility(View.GONE);
+
+                                            }
+
+
+                                        }
+
+                                        @Override
+                                        public void onFailure(Call<RegisterBean> call, Throwable t) {
+                                            bar2.setVisibility(View.GONE);
+
+                                        }
+                                    });
+
+
+                                }
+                                else
+                                {
+                                    Toast.makeText(Register.this , "Password did not match" , Toast.LENGTH_SHORT).show();
+                                }
+
+                            }
+                            else
+                            {
+                                Toast.makeText(Register.this , "Invalid Password" , Toast.LENGTH_SHORT).show();
+                                password.setError("Invalid Details");
+                            }
+
+                        }
+                        else
+                        {
+                            Toast.makeText(Register.this , "Invalid Phone" , Toast.LENGTH_SHORT).show();
+                            mobile.setError("Invalid Details");
+                        }
+
+                    }
+                    else
+                    {
+                        Toast.makeText(Register.this , "Invalid Username" , Toast.LENGTH_SHORT).show();
+                        user.setError("Invalid Details");
                     }
 
-                    @Override
-                    public void onFailure(Call<RegisterBean> call, Throwable t) {
-                        bar2.setVisibility(View.GONE);
+                }
+                else
+                {
+                    Toast.makeText(Register.this , "Invalid Email" , Toast.LENGTH_SHORT).show();
+                    email.setError("Invalid Details");
+                }
 
-                    }
-                });
+
+
+
+
+
+
+
+
+
+
+
+
+
             }
         });
 

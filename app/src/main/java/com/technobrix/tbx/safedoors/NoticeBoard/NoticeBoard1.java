@@ -60,7 +60,7 @@ public class NoticeBoard1 extends Fragment {
                 .build();
 
         AllApiInterface cr = retrofit.create(AllApiInterface.class);
-        Call<NoticeBean> call = cr.notice("1");
+       /* Call<NoticeBean> call = cr.notice("1");
         call.enqueue(new Callback<NoticeBean>() {
             @Override
             public void onResponse(Call<NoticeBean> call, Response<NoticeBean> response) {
@@ -71,7 +71,7 @@ public class NoticeBoard1 extends Fragment {
             public void onFailure(Call<NoticeBean> call, Throwable t) {
 
             }
-        });
+        });*/
         return view;
     }
 }
