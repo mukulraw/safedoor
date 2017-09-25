@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.technobrix.tbx.safedoors.AllApiInterface;
 import com.technobrix.tbx.safedoors.LoginPOJO.LoginBean;
@@ -33,12 +34,15 @@ public class NoticeBoard1 extends Fragment {
     GridLayoutManager manager;
     NoticeAdapter adapter;
 
+    ProgressBar bar;
+
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.notice_board,container,false);
         recyclerView  = (RecyclerView)view.findViewById(R.id.recycler);
+        bar = (ProgressBar)view.findViewById(R.id.bar);
         manager = new GridLayoutManager(getContext(),1);
         adapter = new NoticeAdapter(getContext());
         recyclerView.setAdapter(adapter);
@@ -52,6 +56,7 @@ public class NoticeBoard1 extends Fragment {
         int mDay = cc.get(Calendar.DAY_OF_MONTH);
         System.out.println("1");
 
+        bar.setVisibility(View.VISIBLE);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://safedoors.in")

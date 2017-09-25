@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.technobrix.tbx.safedoors.R;
 
@@ -18,6 +19,7 @@ public class OtherInfoFragment extends Fragment {
     RecyclerView recyclerView;
     GridLayoutManager manager;
     OtherAdapter adapter;
+    ProgressBar bar;
 
 
     @Nullable
@@ -30,6 +32,8 @@ public class OtherInfoFragment extends Fragment {
         adapter = new OtherAdapter(getContext());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(manager);
+        bar = (ProgressBar)view.findViewById(R.id.bar);
+        bar.setVisibility(View.VISIBLE);
         return view;
     }
 }

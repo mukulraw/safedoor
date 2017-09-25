@@ -40,11 +40,10 @@ public class ProfileInfoFragment extends Fragment {
         male = (TextView)view.findViewById(R.id.male);
         bar4 = (ProgressBar)view.findViewById(R.id.progress4);
 
-
         bean b = (bean)getContext().getApplicationContext();
 
+        bar4.setVisibility(View.VISIBLE);
 
-       bar4.setVisibility(View.VISIBLE);
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://safedoors.in")
                 .addConverterFactory(ScalarsConverterFactory.create())

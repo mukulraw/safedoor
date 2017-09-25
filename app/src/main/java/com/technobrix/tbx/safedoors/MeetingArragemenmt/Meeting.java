@@ -41,7 +41,6 @@ public class Meeting extends Fragment {
     EditText meeting, meet;
     TextView submit;
     Context context;
-
     ProgressBar bar;
 
     @Nullable
@@ -68,7 +67,7 @@ public class Meeting extends Fragment {
                 dialog.setCancelable(true);
                 dialog.show();
 
-                TextView date1 = (TextView)dialog.findViewById(R.id.tex2);
+                TextView date1 = (TextView) dialog.findViewById(R.id.tex2);
 
 
             }

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_centerInParent="true"
+    tools:context="com.technobrix.tbx.safedoors.Add">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/cdcdcd_white_stroke"
+        android:padding="10dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginStart="18dp"
+        android:hint="Userid"
+        android:id="@+id/user"
+        android:paddingStart="18dp"
+        android:textColorHint="#cecccc"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cdcdcd_white_stroke"
+            android:padding="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="18dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="18dp"
+            android:hint="Name"
+            android:id="@+id/name"
+            android:paddingStart="18dp"
+            android:textColorHint="#cecccc"/>
+
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cdcdcd_white_stroke"
+            android:padding="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="18dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="18dp"
+            android:hint="Gender"
+            android:id="@+id/gender"
+            android:paddingStart="18dp"
+            android:textColorHint="#cecccc"/>
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cdcdcd_white_stroke"
+            android:padding="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="18dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="18dp"
+            android:hint="Age"
+            android:id="@+id/age"
+            android:paddingStart="18dp"
+            android:textColorHint="#cecccc"/>
+
+
+        <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/cdcdcd_white_stroke"
+        android:padding="10dp"
+            android:paddingStart="18dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginStart="18dp"
+        android:hint="Relation"
+            android:id="@+id/relation"
+        android:textColorHint="#cecccc"/>
+
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/submit"
+            android:background="@drawable/red_round"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginTop="70dp"
+            android:text="SUBMIT"
+            android:textSize="20sp"
+            android:textColor="#fff"/>
+
+
+</LinearLayout>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:id="@+id/bar"/>
+</RelativeLayout>

@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.technobrix.tbx.safedoors.R;
 
@@ -17,6 +18,8 @@ public class HelpDesk extends Fragment {
     RecyclerView recyclerView;
     GridLayoutManager manager;
     HelpDiskAdapeter adapeter;
+    ProgressBar progressBar;
+
 
 
     @Nullable
@@ -26,6 +29,7 @@ public class HelpDesk extends Fragment {
         View view = inflater.inflate(R.layout.helpdesk , container ,false);
 
         recyclerView = (RecyclerView)view.findViewById(R.id.helpdesk);
+        progressBar = (ProgressBar) view.findViewById(R.id.progress);
         manager = new GridLayoutManager(getContext(),1);
         adapeter = new HelpDiskAdapeter(getContext());
         recyclerView.setLayoutManager(manager);

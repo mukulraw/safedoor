@@ -1,8 +1,10 @@
 package com.technobrix.tbx.safedoors;
 
 
+import com.technobrix.tbx.safedoors.AddFamilyPOJO.AddFamilyBean;
 import com.technobrix.tbx.safedoors.Create_MeetingPOJO.CreateBean;
 import com.technobrix.tbx.safedoors.FacilityPOJO.Bean;
+import com.technobrix.tbx.safedoors.FamilyPOJO.FamilyBean;
 import com.technobrix.tbx.safedoors.ForgotPOJO.ForgotBean;
 import com.technobrix.tbx.safedoors.HelpDeskPOJO.helpDeskBeam;
 import com.technobrix.tbx.safedoors.InventryListPOJO.InventoryBean;
@@ -10,6 +12,8 @@ import com.technobrix.tbx.safedoors.LoginPOJO.LoginBean;
 import com.technobrix.tbx.safedoors.MeetingPOJO.MeetingBean;
 import com.technobrix.tbx.safedoors.NoticeListPOJO.NoticeBean;
 import com.technobrix.tbx.safedoors.ProfilePOJO.ProfileBean;
+import com.technobrix.tbx.safedoors.ProfilePOJO.SetFamilyBean;
+import com.technobrix.tbx.safedoors.ProfilePOJO.SetProfileBean;
 import com.technobrix.tbx.safedoors.RegisterPOJO.RegisterBean;
 import com.technobrix.tbx.safedoors.SocityPOJO.SocityBean;
 import com.technobrix.tbx.safedoors.flatPOJO.flatBean;
@@ -76,6 +80,25 @@ public interface AllApiInterface {
     @Multipart
     @POST("app_api/get_help.php")
     Call<helpDeskBeam> getHelpDesk(@Part("socity_id") String id);
+
+
+    @Multipart
+    @POST("app_api/set_profile.php")
+    Call<SetProfileBean> setprofile(@Part("userid") String id , @Part("socity") String society, @Part("gender") String gender , @Part("dob") String dob , @Part("address") String add ,@Part("age") String age );
+
+
+    @Multipart
+    @POST("app_api/set_family_data.php")
+    Call<SetFamilyBean> setfamily(@Part("userid") String id , @Part("family_id") String family, @Part("name") String name , @Part("gender") String gender , @Part("age") String age , @Part("relation") String relation );
+
+    @Multipart
+    @POST("app_api/get_family_info.php")
+    Call<FamilyBean> family(@Part("userid") String id);
+
+    @Multipart
+    @POST("app_api/add_family_info.php")
+    Call<AddFamilyBean> add(@Part("userid") String id ,@Part("name") String name , @Part("gender") String gender , @Part("age") String age , @Part("relation") String relation );
+
 
 }
 

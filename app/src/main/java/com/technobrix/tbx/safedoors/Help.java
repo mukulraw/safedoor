@@ -9,9 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * Created by TBX on 9/23/2017.
- */
 
 public class Help extends Fragment{
 

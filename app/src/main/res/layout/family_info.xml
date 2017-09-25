@@ -130,6 +130,7 @@
         android:layout_height="wrap_content"
         android:padding="15dp"
         android:layout_marginTop="10dp"
+        android:id="@+id/add"
         android:text="ADD FAMILY MEMBERS"
         android:textColor="#ffffff"
         android:layout_gravity="center_vertical"
@@ -138,5 +139,12 @@
         android:background="@color/colorPrimaryDark"/>
 
     </LinearLayout>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:id="@+id/bar"
+        android:visibility="gone"/>
     </RelativeLayout>
 
