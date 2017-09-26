@@ -1,9 +1,9 @@
 package com.technobrix.tbx.safedoors;
 
 
-import com.technobrix.tbx.safedoors.AccountPOJO.AccountBean;
 import com.technobrix.tbx.safedoors.AddFamilyPOJO.AddFamilyBean;
 import com.technobrix.tbx.safedoors.Create_MeetingPOJO.CreateBean;
+import com.technobrix.tbx.safedoors.EventDatePOJO.EventBean;
 import com.technobrix.tbx.safedoors.FacilityPOJO.Bean;
 import com.technobrix.tbx.safedoors.FamilyPOJO.FamilyBean;
 import com.technobrix.tbx.safedoors.ForgotPOJO.ForgotBean;
@@ -18,6 +18,7 @@ import com.technobrix.tbx.safedoors.ProfilePOJO.SetFamilyBean;
 import com.technobrix.tbx.safedoors.ProfilePOJO.SetProfileBean;
 import com.technobrix.tbx.safedoors.RegisterPOJO.RegisterBean;
 import com.technobrix.tbx.safedoors.SocityPOJO.SocityBean;
+import com.technobrix.tbx.safedoors.ViewMeetingPOJO.ViewBean;
 import com.technobrix.tbx.safedoors.flatPOJO.flatBean;
 
 import retrofit2.Call;
@@ -120,8 +121,17 @@ public interface AllApiInterface {
     Call<NotificationBean> notification(@Part("socity_id") String society , @Part("house_id") String id , @Part("notify_id") String notify);
 
     @Multipart
-    @POST("app_api/account_category.php")
-    Call<AccountBean> account(@Part("socity_id") String id);
+    @POST("app_api/get_eventbydate.php")
+    Call<EventBean> event(@Part("socity_id") String id ,@Part("date") String date );
+
+    @Multipart
+    @POST("app_api/meeting_notification.php")
+    Call<EventBean> viewevent(@Part("socity_id") String id ,@Part("meeting_id") String meet , @Part("userid") String user);
+
+
+    @Multipart
+    @POST("app_api/view_metting_byid.php")
+    Call<ViewBean> viewbean(@Part("socity_id") String id , @Part("meeting_id") String meet);
 
 
 }
