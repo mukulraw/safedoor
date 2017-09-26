@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.technobrix.tbx.safedoors.AllApiInterface;
 import com.technobrix.tbx.safedoors.ForgotPOJO.ForgotBean;
+import com.technobrix.tbx.safedoors.GateKeeper;
 import com.technobrix.tbx.safedoors.LoginPOJO.LoginBean;
 import com.technobrix.tbx.safedoors.MainActivity;
 import com.technobrix.tbx.safedoors.R;
@@ -169,15 +170,39 @@ public class Login extends AppCompatActivity {
 
                                 if (Objects.equals(response.body().getMessage(), "Login success")){
 
-                                    bean b = (bean)getApplicationContext();
-                                    b.userId = response.body().getUserid();
-                                    b.name = response.body().getSocityName();
-                                    b.socity = response.body().getSocityId();
-                                    Toast.makeText(Login.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                                    Intent i = new Intent(Login.this, MainActivity.class);
-                                    bar3.setVisibility(View.GONE);
-                                    startActivity(i);
-                                    finish();
+
+
+                                    if (Objects.equals(response.body().getType(), "member"))
+                                    {
+
+                                        bean b = (bean)getApplicationContext();
+                                        b.userId = response.body().getUserid();
+                                        b.name = response.body().getSocityName();
+                                        b.socity = response.body().getSocityId();
+                                        Toast.makeText(Login.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                                        Intent i = new Intent(Login.this, MainActivity.class);
+                                        bar3.setVisibility(View.GONE);
+                                        startActivity(i);
+                                        finish();
+
+
+                                    }
+                                    else if (Objects.equals(response.body().getType(), "member"))
+                                    {
+                                        bean b = (bean)getApplicationContext();
+                                        b.userId = response.body().getUserid();
+                                        b.name = response.body().getSocityName();
+                                        b.socity = response.body().getSocityId();
+                                        Toast.makeText(Login.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                                        Intent i = new Intent(Login.this, GateKeeper.class);
+                                        bar3.setVisibility(View.GONE);
+                                        startActivity(i);
+                                        finish();
+
+                                    }
+
+
+
 
                                 }
                                 else {

@@ -5,10 +5,6 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-/**
- * Created by TBX on 9/23/2017.
- */
-
 public class helpDeskBeam {
 
     @SerializedName("help_list")

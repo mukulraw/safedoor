@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
         <activity android:name=".HelpDesk.HelpOne" />
         <activity android:name=".SplashLogin.Login" />
         <activity android:name=".SplashLogin.GetStarted" />
@@ -24,7 +24,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Add"></activity>
+        <activity android:name=".Add" />
+        <activity android:name=".GateKeeper" />
+        <activity android:name=".Notification"></activity>
     </application>
 
 </manifest>

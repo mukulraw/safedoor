@@ -1,11 +1,13 @@
 package com.technobrix.tbx.safedoors;
 
 
+import com.technobrix.tbx.safedoors.AccountPOJO.AccountBean;
 import com.technobrix.tbx.safedoors.AddFamilyPOJO.AddFamilyBean;
 import com.technobrix.tbx.safedoors.Create_MeetingPOJO.CreateBean;
 import com.technobrix.tbx.safedoors.FacilityPOJO.Bean;
 import com.technobrix.tbx.safedoors.FamilyPOJO.FamilyBean;
 import com.technobrix.tbx.safedoors.ForgotPOJO.ForgotBean;
+import com.technobrix.tbx.safedoors.GetNotificationPOJO.NotificationBean;
 import com.technobrix.tbx.safedoors.HelpDeskPOJO.helpDeskBeam;
 import com.technobrix.tbx.safedoors.InventryListPOJO.InventoryBean;
 import com.technobrix.tbx.safedoors.LoginPOJO.LoginBean;
@@ -98,6 +100,28 @@ public interface AllApiInterface {
     @Multipart
     @POST("app_api/add_family_info.php")
     Call<AddFamilyBean> add(@Part("userid") String id ,@Part("name") String name , @Part("gender") String gender , @Part("age") String age , @Part("relation") String relation );
+
+    @Multipart
+    @POST("app_api/create_viewentryuser.php")
+    Call<SetFamilyBean> setfamily (@Part("gateid") String gate , @Part("socity_id") String  society ,@Part("house_id") String  house , @Part("member_name") String  mem , @Part("visitorname") String  vistor , @Part("purpuse") String  purpuse , @Part("date") String  date , @Part("time") String  time , @Part("profile") String  profile );
+
+
+    @Multipart
+    @POST("app_api/get_all_view_notification.php")
+    Call<NotificationBean> notify(@Part("socity_id") String society , @Part("house_id") String id);
+
+    @Multipart
+    @POST("app_api/lates_notify.php")
+    Call<NotificationBean> bean(@Part("socity_id") String society , @Part("house_id") String id);
+
+
+    @Multipart
+    @POST("app_api/viewnitifybyid.php")
+    Call<NotificationBean> notification(@Part("socity_id") String society , @Part("house_id") String id , @Part("notify_id") String notify);
+
+    @Multipart
+    @POST("app_api/account_category.php")
+    Call<AccountBean> account(@Part("socity_id") String id);
 
 
 }
