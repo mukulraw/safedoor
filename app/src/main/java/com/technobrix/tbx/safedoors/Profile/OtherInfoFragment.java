@@ -19,7 +19,7 @@ public class OtherInfoFragment extends Fragment {
     RecyclerView recyclerView;
     GridLayoutManager manager;
     OtherAdapter adapter;
-    ProgressBar bar;
+
 
 
     @Nullable
@@ -32,8 +32,6 @@ public class OtherInfoFragment extends Fragment {
         adapter = new OtherAdapter(getContext());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(manager);
-        bar = (ProgressBar)view.findViewById(R.id.bar);
-        bar.setVisibility(View.VISIBLE);
         return view;
     }
 }

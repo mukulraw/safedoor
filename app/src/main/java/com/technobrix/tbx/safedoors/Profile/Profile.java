@@ -11,14 +11,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
+import com.technobrix.tbx.safedoors.AllApiInterface;
+import com.technobrix.tbx.safedoors.FacilityPOJO.Bean;
+import com.technobrix.tbx.safedoors.FamilyPOJO.FamilyBean;
+import com.technobrix.tbx.safedoors.ProfilePOJO.SetProfileBean;
 import com.technobrix.tbx.safedoors.R;
+import com.technobrix.tbx.safedoors.bean;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class Profile extends Fragment {
 
     TabLayout layout;
     ViewPager pager;
     ViewAdapter adapter;
-    ProgressBar bar;
 
 
     @Override
@@ -27,7 +38,7 @@ public class Profile extends Fragment {
         View view = inflater.inflate(R.layout.profile , container , false);
         layout = (TabLayout)view.findViewById(R.id.sliding_tabs);
         pager = (ViewPager) view.findViewById(R.id.viewpager);
-        bar =  (ProgressBar)view.findViewById(R.id.bar);
+
         layout.addTab(layout.newTab().setText("ProfileInfo"));
         layout.addTab(layout.newTab().setText("FamilyInfo"));
         layout.addTab(layout.newTab().setText("DocInfo"));
@@ -43,7 +54,8 @@ public class Profile extends Fragment {
         layout.getTabAt(2).setText("DocInfo");
         layout.getTabAt(3).setText("OtherInfo");
 
-        bar.setVisibility(View.VISIBLE);
+
+
         return view;
     }
 }

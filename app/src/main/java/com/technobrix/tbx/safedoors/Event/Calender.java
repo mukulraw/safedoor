@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +21,9 @@ import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 import com.prolificinteractive.materialcalendarview.spans.DotSpan;
 import com.technobrix.tbx.safedoors.AllApiInterface;
+import com.technobrix.tbx.safedoors.EventDatePOJO.EventBean;
+import com.technobrix.tbx.safedoors.EventDatePOJO.MeetingList;
+import com.technobrix.tbx.safedoors.FacilityPOJO.Bean;
 import com.technobrix.tbx.safedoors.MeetingPOJO.MeetingBean;
 import com.technobrix.tbx.safedoors.R;
 import com.technobrix.tbx.safedoors.bean;
@@ -27,6 +32,7 @@ import com.technobrix.tbx.safedoors.meetingDetailBean;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 
@@ -46,8 +52,12 @@ public class Calender extends Fragment {
     ProgressBar progress;
     List<CalendarDay> cl;
     List<String> socIds;
+    RecyclerView recyclerView;
+    GridLayoutManager manager;
+    EventAdapter adapter;
 
-    TextView d , m , title , desc;
+    List<MeetingList> list ;
+
 
     @Nullable
     @Override
@@ -56,15 +66,20 @@ public class Calender extends Fragment {
 
         progress = (ProgressBar)view.findViewById(R.id.progress);
         calendarView = (MaterialCalendarView) view.findViewById(R.id.calender);
-        d = (TextView)view.findViewById(R.id.day);
-        m = (TextView)view.findViewById(R.id.month);
-        title = (TextView)view.findViewById(R.id.title);
-        desc = (TextView)view.findViewById(R.id.desc);
+        recyclerView = (RecyclerView) view.findViewById(R.id.recycler);
 
+
+        list = new ArrayList<>();
+        adapter = new EventAdapter(getContext() , list);
+        manager = new GridLayoutManager(getContext(),1);
+
+        recyclerView.setAdapter(adapter);
+
+        recyclerView.setLayoutManager(manager);
 
         socIds = new ArrayList<>();
-        cl = new ArrayList<>();
 
+        cl = new ArrayList<>();
 
         calendarView.setOnDateChangedListener(new OnDateSelectedListener() {
             @Override
@@ -75,54 +90,55 @@ public class Calender extends Fragment {
 
 
 
-                for (int i = 0 ; i < cl.size() ; i++)
-                {
-                    if (cl.get(i) == date)
-                    {
-                        progress.setVisibility(View.VISIBLE);
-                        Retrofit retrofit = new Retrofit.Builder()
-                                .baseUrl("http://safedoors.in")
-                                .addConverterFactory(ScalarsConverterFactory.create())
-                                .addConverterFactory(GsonConverterFactory.create())
-                                .build();
+                Calendar cal = Calendar.getInstance();
 
 
-                        AllApiInterface cr = retrofit.create(AllApiInterface.class);
+                int year = date.getYear();
+                int month = date.getMonth() + 1;
+                int day = date.getDay();
 
 
-                        bean b = (bean)getContext().getApplicationContext();
+                String dat = String.valueOf(year) + "-" + String.valueOf(month) + "-" + String.valueOf(day);
 
-                        Call<meetingDetailBean> call = cr.getMeetingDetails(b.socity , socIds.get(i));
+                progress.setVisibility(View.VISIBLE);
 
-                        Log.d("ads" , socIds.get(i));
+                bean b = (bean)getContext().getApplicationContext();
 
-                        call.enqueue(new Callback<meetingDetailBean>() {
-                            @Override
-                            public void onResponse(Call<meetingDetailBean> call, Response<meetingDetailBean> response) {
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl("http://safedoors.in")
+                        .addConverterFactory(ScalarsConverterFactory.create())
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build();
 
+                AllApiInterface cr = retrofit.create(AllApiInterface.class);
 
-                                String daa = response.body().getMeetingDate();
-                                String[] d1 = daa.split("-");
+                Call<EventBean> call = cr.event("1" , dat);
 
-                                d.setText(d1[2]);
-                                m.setText(d1[1] + " " + d1[0]);
+                Log.d ("nkdf" , dat);
 
-                                title.setText(response.body().getTitle());
-                                desc.setText(response.body().getDescription());
+                call.enqueue(new Callback<EventBean>() {
+                    @Override
+                    public void onResponse(Call<EventBean> call, Response<EventBean> response) {
 
+                        Log.d("jfj" ,"response");
 
+                        Log.d("hfdhsk" , String.valueOf(response.body().getMeetingList().size()));
 
-                                progress.setVisibility(View.GONE);
-                            }
+                        adapter.Setgrid(response.body().getMeetingList());
 
-                            @Override
-                            public void onFailure(Call<meetingDetailBean> call, Throwable t) {
-                                progress.setVisibility(View.GONE);
-                            }
-                        });
+                        progress.setVisibility(View.GONE);
 
                     }
-                }
+
+                    @Override
+                    public void onFailure(Call<EventBean> call, Throwable t) {
+
+
+                        Log.d("gdg" ,t.toString());
+                        progress.setVisibility(View.GONE);
+
+                    }
+                });
 
 
 

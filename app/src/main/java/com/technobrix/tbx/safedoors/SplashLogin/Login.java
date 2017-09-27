@@ -179,6 +179,7 @@ public class Login extends AppCompatActivity {
                                         b.userId = response.body().getUserid();
                                         b.name = response.body().getSocityName();
                                         b.socity = response.body().getSocityId();
+                                        b.house_id = response.body().getHouseNo();
                                         Toast.makeText(Login.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                                         Intent i = new Intent(Login.this, MainActivity.class);
                                         bar3.setVisibility(View.GONE);

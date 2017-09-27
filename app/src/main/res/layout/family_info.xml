@@ -102,16 +102,24 @@
         android:id="@+id/family"
         android:background="@drawable/cd_cd"
         />
-    </LinearLayout>
 
-    <LinearLayout
+
+        </LinearLayout>
+
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:layout_marginTop="10dp"
         android:layout_alignParentBottom="true"
-        android:orientation="vertical"
-        android:background="#ffffff"
-        >
-
+        android:id="@+id/add"
+        android:text="ADD FAMILY MEMBERS"
+        android:textColor="#ffffff"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:background="@color/colorPrimaryDark"/>
 
 
     <ImageButton
@@ -122,23 +130,11 @@
         android:gravity="end"
         android:layout_gravity="end"
         android:layout_marginEnd="18dp"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginTop="10dp"
         android:src="@drawable/edit"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="15dp"
-        android:layout_marginTop="10dp"
-        android:id="@+id/add"
-        android:text="ADD FAMILY MEMBERS"
-        android:textColor="#ffffff"
-        android:layout_gravity="center_vertical"
-        android:gravity="center"
-        android:textSize="20sp"
-        android:background="@color/colorPrimaryDark"/>
-
-    </LinearLayout>
 
     <ProgressBar
         android:layout_width="wrap_content"

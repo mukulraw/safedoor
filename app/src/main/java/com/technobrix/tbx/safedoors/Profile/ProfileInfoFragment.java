@@ -1,5 +1,6 @@
 package com.technobrix.tbx.safedoors.Profile;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -24,8 +25,8 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class ProfileInfoFragment extends Fragment {
 
-    TextView email , dob , fn, pa, male;
-    ProgressBar bar4;
+    TextView email , dob , fn, pa, male, edit;
+
 
     @Nullable
     @Override
@@ -38,11 +39,17 @@ public class ProfileInfoFragment extends Fragment {
         fn = (TextView)view.findViewById(R.id.fn);
         pa = (TextView)view.findViewById(R.id.pa);
         male = (TextView)view.findViewById(R.id.male);
-        bar4 = (ProgressBar)view.findViewById(R.id.progress4);
+        edit = (TextView)view.findViewById(R.id.edit);
+
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(), ProfileEdit.class);
+                startActivity(i);
+            }
+        });
 
         bean b = (bean)getContext().getApplicationContext();
-
-        bar4.setVisibility(View.VISIBLE);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://safedoors.in")
@@ -60,13 +67,12 @@ public class ProfileInfoFragment extends Fragment {
                 dob.setText(response.body().getDob());
                 pa.setText(response.body().getPermanentAddress());
                 male.setText(response.body().getGender());
-                bar4.setVisibility(View.GONE);
+
 
             }
 
             @Override
             public void onFailure(Call<ProfileBean> call, Throwable t) {
-                bar4.setVisibility(View.GONE);
 
             }
         });

@@ -22,6 +22,7 @@ import com.technobrix.tbx.safedoors.FamilyPOJO.FamilyBean;
 import com.technobrix.tbx.safedoors.ProfilePOJO.ProfileBean;
 import com.technobrix.tbx.safedoors.ProfilePOJO.SetFamilyBean;
 import com.technobrix.tbx.safedoors.R;
+import com.technobrix.tbx.safedoors.bean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,6 +71,8 @@ public class FamilyInfoFragment extends Fragment {
 
         bar.setVisibility(View.VISIBLE);
 
+        bean b = (bean)getContext().getApplicationContext();
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://safedoors.in")
                 .addConverterFactory(ScalarsConverterFactory.create())
@@ -78,14 +81,13 @@ public class FamilyInfoFragment extends Fragment {
 
         AllApiInterface cr = retrofit.create(AllApiInterface.class);
 
-        Call<FamilyBean> call = cr.family("1");
+        Call<FamilyBean> call = cr.family(b.userId);
 
         call.enqueue(new Callback<FamilyBean>() {
             @Override
             public void onResponse(Call<FamilyBean> call, Response<FamilyBean> response) {
 
                adapter.Setgriddata(response.body().getFamiltList());
-
 
                bar.setVisibility(View.GONE);
             }

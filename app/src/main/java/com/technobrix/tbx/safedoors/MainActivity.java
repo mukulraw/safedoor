@@ -1,5 +1,6 @@
 package com.technobrix.tbx.safedoors;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -212,6 +213,9 @@ public class MainActivity extends AppCompatActivity {
 
         if (id == R.id.notification)
         {
+
+            Intent i = new Intent(MainActivity . this , Notification.class);
+            startActivity(i);
 
         }
 
