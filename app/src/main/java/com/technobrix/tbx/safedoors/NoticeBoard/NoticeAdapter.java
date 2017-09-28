@@ -8,17 +8,31 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.technobrix.tbx.safedoors.NoticeListPOJO.NoticeList;
 import com.technobrix.tbx.safedoors.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.MyViewHolder> {
 
     Context context;
+    List<NoticeList> list = new ArrayList<>();
 
-    public NoticeAdapter(Context context){
+    public NoticeAdapter(Context context , List<NoticeList> list){
 
         this.context = context;
+        this.list = list;
     }
+
+    public void setGridData(List<NoticeList> list)
+    {
+        this.list = list;
+        notifyDataSetChanged();
+    }
+
     @Override
     public NoticeAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
@@ -28,18 +42,29 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(NoticeAdapter.MyViewHolder holder, int position) {
+        NoticeList item = list.get(position);
+
+
+        holder.title.setText(item.getNotice());
+        holder.date.setText(item.getDate());
+
 
     }
 
     @Override
     public int getItemCount() {
-        return 15;
+        return list.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
+        TextView title , date;
+
         public MyViewHolder(View itemView) {
             super(itemView);
+
+            title = (TextView)itemView.findViewById(R.id.title);
+            date = (TextView)itemView.findViewById(R.id.date);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

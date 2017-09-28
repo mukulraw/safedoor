@@ -133,6 +133,10 @@ public interface AllApiInterface {
     @POST("app_api/view_metting_byid.php")
     Call<ViewBean> viewbean(@Part("socity_id") String id , @Part("meeting_id") String meet);
 
+    @Multipart
+    @POST("app_api/notice_board_list.php")
+    Call<NoticeBean> getNoticeList(@Part("socity_id") String id , @Part("date") String date);
+
 
 }
 
