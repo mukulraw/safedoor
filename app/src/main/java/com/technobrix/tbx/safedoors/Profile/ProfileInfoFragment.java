@@ -7,12 +7,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.technobrix.tbx.safedoors.AllApiInterface;
-import com.technobrix.tbx.safedoors.LoginPOJO.LoginBean;
-import com.technobrix.tbx.safedoors.ProfilePOJO.ProfileBean;
+import com.technobrix.tbx.safedoors.GetProfilePOJO.GetProfileBean;
 import com.technobrix.tbx.safedoors.R;
 import com.technobrix.tbx.safedoors.bean;
 
@@ -26,7 +24,6 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 public class ProfileInfoFragment extends Fragment {
 
     TextView email , dob , fn, pa, male, edit;
-
 
     @Nullable
     @Override
@@ -58,10 +55,10 @@ public class ProfileInfoFragment extends Fragment {
                 .build();
 
         AllApiInterface cr = retrofit.create(AllApiInterface.class);
-        Call<ProfileBean> call = cr.getprofile(b.userId);
-        call.enqueue(new Callback<ProfileBean>() {
+        Call<GetProfileBean> call = cr.getprofile(b.userId);
+        call.enqueue(new Callback<GetProfileBean>() {
             @Override
-            public void onResponse(Call<ProfileBean> call, Response<ProfileBean> response) {
+            public void onResponse(Call<GetProfileBean> call, Response<GetProfileBean> response) {
 
                 email.setText(response.body().getEmail());
                 dob.setText(response.body().getDob());
@@ -72,7 +69,7 @@ public class ProfileInfoFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<ProfileBean> call, Throwable t) {
+            public void onFailure(Call<GetProfileBean> call, Throwable t) {
 
             }
         });

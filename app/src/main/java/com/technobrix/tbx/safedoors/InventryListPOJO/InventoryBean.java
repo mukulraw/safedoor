@@ -5,9 +5,6 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-/**
- * Created by tvs on 9/22/2017.
- */
 
 public class InventoryBean {
 

@@ -21,6 +21,7 @@ public class FacilityAdapter extends RecyclerView.Adapter<FacilityAdapter.MyView
 
 
     public FacilityAdapter(Context context , List<FacilityList> list){
+
         this.context = context;
         this.list =  list;
     }
@@ -40,7 +41,6 @@ public class FacilityAdapter extends RecyclerView.Adapter<FacilityAdapter.MyView
         holder.name.setText(item.getName());
         holder.lorem.setText("Price: " + item.getPricePer());
         holder.one.setText(String.valueOf(position + 1) + ".");
-
 
     }
     public void setgriddata(List<FacilityList> list){

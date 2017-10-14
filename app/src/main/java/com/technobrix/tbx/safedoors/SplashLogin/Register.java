@@ -61,7 +61,7 @@ public class Register extends AppCompatActivity {
 
 
 
-bar2.setVisibility(View.VISIBLE);
+        bar2.setVisibility(View.VISIBLE);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://safedoors.in")

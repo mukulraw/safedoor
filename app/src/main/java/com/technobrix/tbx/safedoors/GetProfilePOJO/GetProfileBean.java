@@ -1,11 +1,10 @@
-package com.technobrix.tbx.safedoors.ProfilePOJO;
+package com.technobrix.tbx.safedoors.GetProfilePOJO;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+public class GetProfileBean {
 
-
-public class ProfileBean {
 
     @SerializedName("userid")
     @Expose
@@ -140,6 +139,5 @@ public class ProfileBean {
         this.permanentAddress = permanentAddress;
     }
 
+
 }
-
-

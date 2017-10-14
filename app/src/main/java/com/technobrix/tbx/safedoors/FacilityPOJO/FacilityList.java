@@ -50,4 +50,5 @@ public class FacilityList {
     public void setPricePer(String pricePer) {
         this.pricePer = pricePer;
     }
+
 }

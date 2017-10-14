@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,11 +55,11 @@ public class Facility extends Fragment {
 
         recyclerView.setAdapter(adapter);
 
-
+        Log.d("kamal" , "hii");
 
         bar.setVisibility(View.VISIBLE);
 
-
+        bean b = (bean)getContext().getApplicationContext();
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://safedoors.in")
@@ -68,7 +69,7 @@ public class Facility extends Fragment {
 
         AllApiInterface cr = retrofit.create(AllApiInterface.class);
 
-        Call<Bean> call = cr.bean("1");
+        Call<Bean> call = cr.bean(b.socity_id);
 
         call.enqueue(new Callback<Bean>() {
             @Override
@@ -76,6 +77,8 @@ public class Facility extends Fragment {
                 bar.setVisibility(View.GONE);
 
                 adapter.setgriddata(response.body().getFacilityList());
+
+
 
 
 

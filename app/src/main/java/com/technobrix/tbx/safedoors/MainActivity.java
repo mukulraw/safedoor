@@ -1,6 +1,7 @@
 package com.technobrix.tbx.safedoors;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -23,17 +24,27 @@ import com.technobrix.tbx.safedoors.Inventory_List.Inventory;
 import com.technobrix.tbx.safedoors.MeetingArragemenmt.Meeting;
 import com.technobrix.tbx.safedoors.NoticeBoard.NoticeBoard1;
 import com.technobrix.tbx.safedoors.Profile.Profile;
+import com.technobrix.tbx.safedoors.SplashLogin.Login;
 
 public class MainActivity extends AppCompatActivity {
 
     Toolbar toolbar;
     DrawerLayout drawer;
-    TextView accounting , notice , event , meeting , inventory , helpdisk , profile , discuss;
+    TextView accounting , notice , event , meeting , inventory , helpdisk , profile , discuss , logout;
+
+    SharedPreferences pref;
+    SharedPreferences.Editor edit;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        pref = getSharedPreferences("hjdf" , MODE_PRIVATE);
+        edit = pref.edit();
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         accounting = (TextView) findViewById(R.id.accounting);
         notice = (TextView) findViewById(R.id.notice);
@@ -43,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         helpdisk = (TextView) findViewById(R.id.help);
         profile = (TextView) findViewById(R.id.profiled);
         discuss = (TextView) findViewById(R.id.discussion);
+        logout = (TextView) findViewById(R.id.logout);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         toolbar.setTitleTextColor(Color.WHITE);
@@ -196,6 +208,36 @@ public class MainActivity extends AppCompatActivity {
                 drawer.closeDrawer(GravityCompat.START);
             }
         });
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i = new Intent(MainActivity.this , Login .class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                edit.remove("user");
+                edit.remove("type");
+                edit.remove("pass");
+                edit.apply();
+
+
+                bean b = (bean)getApplicationContext();
+
+                b.name = "";
+                b.userId = "";
+                b.email = "";
+
+                startActivity(i);
+                finish();
+
+
+
+
+            }
+        });
+
+
 
     }
     @Override

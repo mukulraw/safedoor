@@ -13,14 +13,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.technobrix.tbx.safedoors.Add;
-import com.technobrix.tbx.safedoors.AddFamilyPOJO.AddFamilyBean;
 import com.technobrix.tbx.safedoors.AllApiInterface;
-import com.technobrix.tbx.safedoors.FacilityAdapter;
-import com.technobrix.tbx.safedoors.FacilityPOJO.FacilityList;
 import com.technobrix.tbx.safedoors.FamilyPOJO.FamiltList;
 import com.technobrix.tbx.safedoors.FamilyPOJO.FamilyBean;
-import com.technobrix.tbx.safedoors.ProfilePOJO.ProfileBean;
-import com.technobrix.tbx.safedoors.ProfilePOJO.SetFamilyBean;
 import com.technobrix.tbx.safedoors.R;
 import com.technobrix.tbx.safedoors.bean;
 

@@ -19,4 +19,5 @@ public class Bean {
     public void setFacilityList(List<FacilityList> facilityList) {
         this.facilityList = facilityList;
     }
+
 }
