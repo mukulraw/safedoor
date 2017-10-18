@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.technobrix.tbx.safedoors.AllApiInterface;
@@ -25,6 +27,8 @@ public class ProfileInfoFragment extends Fragment {
 
     TextView email , dob , fn, pa, male, edit;
 
+    ProgressBar bar;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -37,6 +41,7 @@ public class ProfileInfoFragment extends Fragment {
         pa = (TextView)view.findViewById(R.id.pa);
         male = (TextView)view.findViewById(R.id.male);
         edit = (TextView)view.findViewById(R.id.edit);
+        bar = (ProgressBar) view.findViewById(R.id.progress);
 
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +50,8 @@ public class ProfileInfoFragment extends Fragment {
                 startActivity(i);
             }
         });
+
+        bar.setVisibility(View.VISIBLE);
 
         bean b = (bean)getContext().getApplicationContext();
 
@@ -56,20 +63,34 @@ public class ProfileInfoFragment extends Fragment {
 
         AllApiInterface cr = retrofit.create(AllApiInterface.class);
         Call<GetProfileBean> call = cr.getprofile(b.userId);
+
+        Log.d("nisha" , b.userId);
+
         call.enqueue(new Callback<GetProfileBean>() {
             @Override
             public void onResponse(Call<GetProfileBean> call, Response<GetProfileBean> response) {
 
                 email.setText(response.body().getEmail());
+
+                Log.d("asdasd" , response.body().getEmail());
+
                 dob.setText(response.body().getDob());
                 pa.setText(response.body().getPermanentAddress());
                 male.setText(response.body().getGender());
+
+                Log.d("hmm" , "response");
+
+                bar.setVisibility(View.GONE);
 
 
             }
 
             @Override
             public void onFailure(Call<GetProfileBean> call, Throwable t) {
+
+                bar.setVisibility(View.GONE);
+
+                Log.d("mmmm" , t.toString());
 
             }
         });

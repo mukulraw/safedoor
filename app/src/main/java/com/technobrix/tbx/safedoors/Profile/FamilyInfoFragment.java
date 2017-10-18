@@ -14,8 +14,9 @@ import android.widget.TextView;
 
 import com.technobrix.tbx.safedoors.Add;
 import com.technobrix.tbx.safedoors.AllApiInterface;
-import com.technobrix.tbx.safedoors.FamilyPOJO.FamiltList;
 import com.technobrix.tbx.safedoors.FamilyPOJO.FamilyBean;
+import com.technobrix.tbx.safedoors.GetFamilyPOJO.FamiltList;
+import com.technobrix.tbx.safedoors.GetFamilyPOJO.GetFamilyBean;
 import com.technobrix.tbx.safedoors.R;
 import com.technobrix.tbx.safedoors.bean;
 
@@ -76,11 +77,11 @@ public class FamilyInfoFragment extends Fragment {
 
         AllApiInterface cr = retrofit.create(AllApiInterface.class);
 
-        Call<FamilyBean> call = cr.family(b.userId);
+        Call<GetFamilyBean> call = cr.family(b.userId);
 
-        call.enqueue(new Callback<FamilyBean>() {
+        call.enqueue(new Callback<GetFamilyBean>() {
             @Override
-            public void onResponse(Call<FamilyBean> call, Response<FamilyBean> response) {
+            public void onResponse(Call<GetFamilyBean> call, Response<GetFamilyBean> response) {
 
                adapter.Setgriddata(response.body().getFamiltList());
 
@@ -88,7 +89,7 @@ public class FamilyInfoFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<FamilyBean> call, Throwable t) {
+            public void onFailure(Call<GetFamilyBean> call, Throwable t) {
 
                 bar.setVisibility(View.GONE);
 

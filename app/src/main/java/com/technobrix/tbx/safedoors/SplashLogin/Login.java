@@ -1,7 +1,10 @@
 package com.technobrix.tbx.safedoors.SplashLogin;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,6 +26,8 @@ import com.technobrix.tbx.safedoors.RegisterPOJO.RegisterBean;
 import com.technobrix.tbx.safedoors.bean;
 
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -36,11 +41,18 @@ public class Login extends AppCompatActivity {
     EditText mail,pass;
     TextView create,forget,signin;
     ProgressBar bar3;
+    SharedPreferences pref;
+    SharedPreferences.Editor edit;
+    int RC_SIGN_IN = 12;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        pref = getSharedPreferences("pref" , Context.MODE_PRIVATE);
+        edit = pref.edit();
+
         mail = (EditText) findViewById(R.id.mail);
 
         pass  = (EditText) findViewById(R.id.pass);
@@ -51,13 +63,7 @@ public class Login extends AppCompatActivity {
         bar3 = (ProgressBar) findViewById(R.id.progress3);
 
 
-        create.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(Login . this , Register.class);
-                startActivity(i);
-            }
-        });
+
 
 
         forget.setOnClickListener(new View.OnClickListener() {
@@ -129,11 +135,6 @@ public class Login extends AppCompatActivity {
                             em.setError("Invalid Details");
                             Toast.makeText(Login.this , "Invalid Email" , Toast.LENGTH_SHORT).show();
                         }
-
-
-
-
-
                     }
                 });
             }
@@ -141,11 +142,12 @@ public class Login extends AppCompatActivity {
 
 
         signin.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
 
-                String e = mail.getText().toString();
-                String u = pass.getText().toString();
+                final String e = mail.getText().toString();
+                final String u = pass.getText().toString();
 
                 if (e.length()>0)
                 {
@@ -171,24 +173,32 @@ public class Login extends AppCompatActivity {
                                 if (Objects.equals(response.body().getMessage(), "Login success")){
 
 
-
                                     if (Objects.equals(response.body().getType(), "member"))
                                     {
 
                                         bean b = (bean)getApplicationContext();
+
                                         b.userId = response.body().getUserid();
+
                                         b.name = response.body().getSocityName();
+
                                         b.socity = response.body().getSocityId();
+
                                         b.house_id = response.body().getHouseNo();
+
+                                        edit.putString("email" , e);
+                                        edit.putString("pass" , u);
+                                        edit.apply();
+
+
                                         Toast.makeText(Login.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                                         Intent i = new Intent(Login.this, MainActivity.class);
                                         bar3.setVisibility(View.GONE);
                                         startActivity(i);
                                         finish();
 
-
                                     }
-                                    else if (Objects.equals(response.body().getType(), "member"))
+                                    else if (Objects.equals(response.body().getType(), "gatekeeper"))
                                     {
                                         bean b = (bean)getApplicationContext();
                                         b.userId = response.body().getUserid();
@@ -237,12 +247,53 @@ public class Login extends AppCompatActivity {
                 }
 
 
+            }
+        });
 
-
-
-
+        create.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Login . this , Register.class);
+                startActivity(i);
             }
         });
 
     }
+
+
+
+    private boolean isValidMail(String email) {
+
+        boolean check;
+        Pattern p;
+        Matcher m;
+
+        String EMAIL_STRING = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+
+        p = Pattern.compile(EMAIL_STRING);
+
+        m = p.matcher(email);
+        check = m.matches();
+        return check;
+    }
+
+
+    private boolean isValidMobile(String phone) {
+        boolean check=false;
+        if(!Pattern.matches("[a-zA-Z]+", phone)) {
+            if(phone.length() < 6 || phone.length() > 13) {
+                // if(phone.length() != 10) {
+                check = false;
+
+            } else {
+                check = true;
+            }
+        } else {
+            check=false;
+        }
+        return check;
+    }
+
 }
+

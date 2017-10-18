@@ -38,6 +38,6 @@
         android:gravity="center"
         android:textColor="#ffffff"
         android:textStyle="bold"
-        android:background="#FFCDD2"/>
+        android:background="@color/colorAccent"/>
 
 </LinearLayout>

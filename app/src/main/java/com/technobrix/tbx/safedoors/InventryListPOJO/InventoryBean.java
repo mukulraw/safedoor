@@ -19,5 +19,4 @@ public class InventoryBean {
     public void setInventryList(List<InventryList> inventryList) {
         this.inventryList = inventryList;
     }
-
 }

@@ -28,7 +28,8 @@
         <activity android:name=".GateKeeper" />
         <activity android:name=".Notification" />
         <activity android:name=".Profile.Edit" />
-        <activity android:name=".Profile.ProfileEdit"></activity>
+        <activity android:name=".Profile.ProfileEdit" />
+        <activity android:name=".AddVehicle"></activity>
     </application>
 
 </manifest>

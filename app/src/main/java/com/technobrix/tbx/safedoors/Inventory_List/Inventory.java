@@ -70,7 +70,7 @@ public class Inventory extends Fragment {
                 .build();
 
         AllApiInterface cr = retrofit.create(AllApiInterface.class);
-        Call<InventoryBean> call = cr.inventory(b.socity_id);
+        Call<InventoryBean> call = cr.inventory("1");
 
         Log.d("mnishaaaa" , b.socity_id);
 
@@ -129,7 +129,7 @@ public class Inventory extends Fragment {
 
         }
 
-        public void setgrid(List<InventryList>list){
+        public void setgrid(List<InventryList> list){
 
             this.list = list;
             notifyDataSetChanged();

@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     Toolbar toolbar;
     DrawerLayout drawer;
-    TextView accounting , notice , event , meeting , inventory , helpdisk , profile , discuss , logout;
+    TextView accounting , notice , event , meeting , inventory , helpdisk , profile , discuss , logout , facility , help;
 
     SharedPreferences pref;
     SharedPreferences.Editor edit;
@@ -51,9 +51,11 @@ public class MainActivity extends AppCompatActivity {
         event = (TextView) findViewById(R.id.event);
         meeting = (TextView) findViewById(R.id.meeting);
         inventory = (TextView) findViewById(R.id.inventor);
+       // help = (TextView) findViewById(R.id.helpp);
         helpdisk = (TextView) findViewById(R.id.help);
         profile = (TextView) findViewById(R.id.profiled);
         discuss = (TextView) findViewById(R.id.discussion);
+        facility = (TextView) findViewById(R.id.facility);
         logout = (TextView) findViewById(R.id.logout);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -95,6 +97,33 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        facility.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction ft = fragmentManager.beginTransaction();
+                while (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+                    getSupportFragmentManager().popBackStackImmediate();
+                }
+                Facility fragment = new Facility();
+                ft.replace(R.id.replace, fragment);
+                ft.addToBackStack(null);
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
+                ft.commit();
+                drawer.closeDrawer(GravityCompat.START);
+
+            }
+        });
+
+
+
+
+
+
+
+
+
         event.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -112,12 +141,17 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
+
+
+
         helpdisk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 FragmentTransaction ft = fragmentManager.beginTransaction();
-                HelpDesk fragment = new HelpDesk();
+                Help fragment = new Help();
                 while (getSupportFragmentManager().getBackStackEntryCount() > 0) {
                     getSupportFragmentManager().popBackStackImmediate();
                 }

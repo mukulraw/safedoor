@@ -11,11 +11,14 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.technobrix.tbx.safedoors.AllApiInterface;
@@ -24,6 +27,7 @@ import com.technobrix.tbx.safedoors.LoginPOJO.LoginBean;
 import com.technobrix.tbx.safedoors.MainActivity;
 import com.technobrix.tbx.safedoors.MeetingPOJO.MeetingBean;
 import com.technobrix.tbx.safedoors.R;
+import com.technobrix.tbx.safedoors.bean;
 
 import java.util.Objects;
 
@@ -37,11 +41,15 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class Meeting extends Fragment {
 
-    LinearLayout title,starttime,endtime;
-    EditText meeting, meet;
-    TextView submit;
+   LinearLayout date1 , date2 , date3 ;
+
+    TextView   time1 , time2 , time3 , submit;
+
+    EditText title, descrp;
     Context context;
     ProgressBar bar;
+    String date , starttime , endtime;
+    Dialog dialog;
 
     @Nullable
     @Override
@@ -49,58 +57,114 @@ public class Meeting extends Fragment {
 
         View view = inflater.inflate(R.layout.meeting , container , false);
 
-        meet = (EditText)view.findViewById(R.id.meetingtitle) ;
-        meeting = (EditText)view.findViewById(R.id.meeetingd) ;
+        title = (EditText)view.findViewById(R.id.meetingtitle) ;
+         descrp = (EditText)view.findViewById(R.id.meeetingd) ;
         bar = (ProgressBar)view.findViewById(R.id.progress);
 
-        title = (LinearLayout)view.findViewById(R.id.meeting);
-        /*starttime = (LinearLayout)view.findViewById(R.id.starttime);
-        endtime = (LinearLayout)view.findViewById(R.id.endtime);*/
+        date1 = (LinearLayout)view.findViewById(R.id.date1);
+        date2 = (LinearLayout)view.findViewById(R.id.date2);
+        date3 = (LinearLayout)view.findViewById(R.id.date3);
+
+        time1 = (TextView)view.findViewById(R.id.time1);
+        time2 = (TextView)view.findViewById(R.id.time2);
+        time3 = (TextView)view.findViewById(R.id.time3);
+
         submit = (TextView)view.findViewById(R.id.submit);
 
-        title.setOnClickListener(new View.OnClickListener() {
+
+
+        date1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Dialog dialog = new Dialog(getActivity());
+                final Dialog dialog = new Dialog(getActivity());
                 dialog.setContentView(R.layout.meetingdialog);
                 dialog.setCancelable(true);
                 dialog.show();
 
-                TextView date1 = (TextView) dialog.findViewById(R.id.tex2);
+                TextView submit = dialog.findViewById(R.id.submit);
+                final DatePicker picker = dialog.findViewById(R.id.picker);
+
+                submit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+
+                        String day = String.valueOf(picker.getDayOfMonth());
+                        String month = String.valueOf(picker.getMonth() + 1);
+                        String year = String.valueOf(picker.getYear());
+
+                        time1.setText(day + "-" + month + "-" + year);
+
+                        dialog.dismiss();
+
+                    }
+                });
 
 
             }
         });
 
-        starttime.setOnClickListener(new View.OnClickListener() {
+
+        date2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Dialog dialog = new Dialog(getActivity());
-                dialog.setContentView(R.layout.meetingdialog);
+                final Dialog dialog = new Dialog(getActivity());
+                dialog.setContentView(R.layout.timepicker);
                 dialog.setCancelable(true);
                 dialog.show();
 
-               TextView date2 = (TextView)dialog.findViewById(R.id.text5);
+                Button submit = dialog.findViewById(R.id.submit);
+                final TimePicker picker = dialog.findViewById(R.id.time);
+
+                submit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        String hour = String.valueOf(picker.getCurrentHour());
+                        String minute = String.valueOf(picker.getCurrentMinute());
+
+                        time2.setText(hour + " : " + minute);
+                        dialog.dismiss();
 
 
+                    }
+                });
             }
+
         });
 
-        endtime.setOnClickListener(new View.OnClickListener() {
+        date3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Dialog dialog = new Dialog(getActivity());
-                dialog.setContentView(R.layout.meetingdialog);
+                final Dialog dialog = new Dialog(getActivity());
+                dialog.setContentView(R.layout.timepicker);
                 dialog.setCancelable(true);
                 dialog.show();
 
-                TextView date3 = (TextView)dialog.findViewById(R.id.text5);
+
+                Button submit = dialog.findViewById(R.id.submit);
+                final TimePicker picker = dialog.findViewById(R.id.time);
+
+                submit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        String hour = String.valueOf(picker.getCurrentHour());
+                        String minute = String.valueOf(picker.getCurrentMinute());
+
+                        time3.setText(hour + " : " + minute);
+
+                        dialog.dismiss();
+
+                    }
+                    });
 
 
-            }
+
+                    }
         });
 
         submit.setOnClickListener(new View.OnClickListener() {
@@ -108,9 +172,11 @@ public class Meeting extends Fragment {
             public void onClick(View view) {
 
 
-                String m = meet.getText().toString();
-                String m1 = meeting.getText().toString();
+                String t = title.getText().toString();
+                String des = descrp.getText().toString();
                 bar.setVisibility(View.VISIBLE);
+
+                bean b = (bean)getContext().getApplicationContext();
 
                 Retrofit retrofit = new Retrofit.Builder()
                         .baseUrl("http://safedoors.in")
@@ -119,13 +185,15 @@ public class Meeting extends Fragment {
                         .build();
 
                 AllApiInterface cr = retrofit.create(AllApiInterface.class);
-                /*Call<CreateBean> call = cr.create(m , m1);
+                Call<CreateBean> call = cr.creat(b.socity_id , b.userId ,date , starttime , t  , des);
                 call.enqueue(new Callback<CreateBean>() {
                     @Override
                     public void onResponse(Call<CreateBean> call, Response<CreateBean> response) {
 
                         Toast.makeText(getContext() , response.body().getStatus() , Toast.LENGTH_SHORT).show();
                         bar.setVisibility(View.GONE);
+
+
                     }
 
                     @Override
@@ -133,7 +201,7 @@ public class Meeting extends Fragment {
                         bar.setVisibility(View.GONE);
 
                     }
-                });*/
+                });
             }
         });
 

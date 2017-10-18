@@ -2,13 +2,19 @@ package com.technobrix.tbx.safedoors;
 
 
 import com.technobrix.tbx.safedoors.AddFamilyPOJO.AddFamilyBean;
+import com.technobrix.tbx.safedoors.AddVehiclePOJO.AddBean;
 import com.technobrix.tbx.safedoors.Create_MeetingPOJO.CreateBean;
 import com.technobrix.tbx.safedoors.EventDatePOJO.EventBean;
 import com.technobrix.tbx.safedoors.FacilityPOJO.Bean;
 import com.technobrix.tbx.safedoors.FamilyPOJO.FamilyBean;
 import com.technobrix.tbx.safedoors.ForgotPOJO.ForgotBean;
+import com.technobrix.tbx.safedoors.GetEventPOJO.GetEventBean;
+import com.technobrix.tbx.safedoors.GetFamilyPOJO.GetFamilyBean;
+import com.technobrix.tbx.safedoors.GetHelpPOJO.HelpBean;
 import com.technobrix.tbx.safedoors.GetNotificationPOJO.NotificationBean;
 import com.technobrix.tbx.safedoors.GetProfilePOJO.GetProfileBean;
+import com.technobrix.tbx.safedoors.GetVehiIdPOJO.IdVehicleBean;
+import com.technobrix.tbx.safedoors.GetVehiclePOJO.VehicleBean;
 import com.technobrix.tbx.safedoors.HelpDeskPOJO.helpDeskBeam;
 import com.technobrix.tbx.safedoors.InventryListPOJO.InventoryBean;
 import com.technobrix.tbx.safedoors.LoginPOJO.LoginBean;
@@ -18,6 +24,7 @@ import com.technobrix.tbx.safedoors.ProfilePOJO.SetFamilyBean;
 import com.technobrix.tbx.safedoors.ProfilePOJO.SetProfileBean;
 import com.technobrix.tbx.safedoors.RegisterPOJO.RegisterBean;
 import com.technobrix.tbx.safedoors.SocityPOJO.SocityBean;
+import com.technobrix.tbx.safedoors.UpdateVehiclePOJO.UpdateBean;
 import com.technobrix.tbx.safedoors.ViewMeetingPOJO.ViewBean;
 import com.technobrix.tbx.safedoors.flatPOJO.flatBean;
 
@@ -131,7 +138,8 @@ public interface AllApiInterface {
 
     @Multipart
     @POST("app_api/get_family_info.php")
-    Call<FamilyBean> family(@Part("userid") String id);
+    Call<GetFamilyBean> family
+            (@Part("userid") String id);
 
     @Multipart
     @POST("app_api/add_family_info.php")
@@ -201,6 +209,48 @@ public interface AllApiInterface {
     Call<NoticeBean> getNoticeList
             (@Part("socity_id") String id ,
              @Part("date") String date);
+
+    @Multipart
+    @POST("app_api/get_vehicle.php")
+    Call<VehicleBean> vehiclebean
+            (@Part("userid") String id);
+
+
+
+    @Multipart
+    @POST("app_api/add_vehical.php")
+    Call<AddBean> addbean
+            (@Part("userid") String id,
+            @Part("name") String name,
+            @Part("no_of_vehicle") String n,
+            @Part("vehicle_no") String vehicle);
+
+    @Multipart
+    @POST("app_api/set_vehical.php")
+    Call<UpdateBean> update
+            (@Part("userid") String id ,
+             @Part("name") String name ,
+             @Part("no_of_vehicle") String n ,
+             @Part("vehicle_no") String vehicle ,
+             @Part("vehicl_id") String vehi);
+
+
+    @Multipart
+    @POST("app_api/vehiclbyid.php")
+    Call<IdVehicleBean> id
+            (@Part("userid") String id ,
+             @Part("vehicl_id") String vehi);
+
+    @Multipart
+    @POST("app_api/get_meeting_list.php")
+    Call<GetEventBean> getbena
+            (@Part("socity_id") String id);
+
+
+    @Multipart
+    @POST("app_api/get_help.php")
+    Call<HelpBean> help
+            (@Part("socity_id") String id);
 
 
 

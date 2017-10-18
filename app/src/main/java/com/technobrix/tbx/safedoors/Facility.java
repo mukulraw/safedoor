@@ -69,7 +69,7 @@ public class Facility extends Fragment {
 
         AllApiInterface cr = retrofit.create(AllApiInterface.class);
 
-        Call<Bean> call = cr.bean(b.socity_id);
+        Call<Bean> call = cr.bean("1");
 
         call.enqueue(new Callback<Bean>() {
             @Override
@@ -77,9 +77,6 @@ public class Facility extends Fragment {
                 bar.setVisibility(View.GONE);
 
                 adapter.setgriddata(response.body().getFacilityList());
-
-
-
 
 
             }

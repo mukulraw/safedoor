@@ -56,8 +56,7 @@ public class FacilityAdapter extends RecyclerView.Adapter<FacilityAdapter.MyView
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView name , lorem , one;
-        Button book;
+        TextView name , lorem , one , book;
 
 
         public MyViewHolder(View itemView) {
@@ -66,7 +65,7 @@ public class FacilityAdapter extends RecyclerView.Adapter<FacilityAdapter.MyView
             name = (TextView)itemView.findViewById(R.id.name);
             lorem = (TextView)itemView.findViewById(R.id.text);
             one = (TextView)itemView.findViewById(R.id.one);
-            book = (Button) itemView.findViewById(R.id.book);
+            book = (TextView) itemView.findViewById(R.id.book);
         }
     }
 }

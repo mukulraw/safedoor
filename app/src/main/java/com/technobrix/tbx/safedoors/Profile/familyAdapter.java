@@ -8,7 +8,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.technobrix.tbx.safedoors.FacilityPOJO.FacilityList;
-import com.technobrix.tbx.safedoors.FamilyPOJO.FamiltList;
+
+import com.technobrix.tbx.safedoors.GetFamilyPOJO.FamiltList;
 import com.technobrix.tbx.safedoors.R;
 
 import java.util.ArrayList;

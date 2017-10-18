@@ -8,10 +8,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="@drawable/cd_cd"
+        android:background="#e9e6e6"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        android:weightSum="3">
+        android:weightSum="4">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -27,6 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Car"
+                android:id="@+id/car"
                 android:layout_gravity="center_vertical"
                 android:gravity="center"/>
         </LinearLayout>
@@ -44,6 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="1"
+                android:id="@+id/one"
                 android:layout_gravity="center_vertical"
                 android:gravity="center"/>
         </LinearLayout>
@@ -62,9 +64,32 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="HR 55 2087"
+                android:id="@+id/vehicle"
                 android:layout_gravity="center_vertical"
                 android:gravity="center"/>
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            >
+
+
+            <ImageButton
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/close"
+                android:src="@drawable/close"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+
 
     </LinearLayout>
 </LinearLayout>

@@ -112,7 +112,7 @@ public class Calender extends Fragment {
 
                 AllApiInterface cr = retrofit.create(AllApiInterface.class);
 
-                Call<EventBean> call = cr.event("1" , dat);
+                Call<EventBean> call = cr.event("1" ,dat);
 
                 Log.d ("nkdf" , dat);
 

@@ -13,7 +13,30 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
 
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/toolbar"
+            android:background="@color/colorAccent">
+        </android.support.v7.widget.Toolbar>
+
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/log"
+                android:id="@+id/log"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="10dp"
+                />
+
+        </RelativeLayout>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -75,13 +98,11 @@
                 android:layout_alignParentBottom="true"
                 android:padding="7dp"
                 android:text="CAPTURE"
+                android:id="@+id/capture"
                 android:background="@drawable/dard_shade"
                 android:textColor="#fff"
                 android:gravity="center"
                 />
-
-
-
 
 
 
@@ -96,14 +117,13 @@
             android:layout_marginEnd="18dp"
             android:layout_marginTop="5dp"/>
 
-        <EditText
+        <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="18dp"
             android:layout_marginEnd="18dp"
-            android:padding="10dp"
+            android:padding="15dp"
             android:id="@+id/member"
-            android:drawableEnd="@drawable/down"
             android:background="@drawable/cdcdcd_white_stroke"/>
 
 

@@ -7,6 +7,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
+
 <TextView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -92,6 +94,8 @@
         </LinearLayout>
 
     </LinearLayout>
+
+
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -106,28 +110,14 @@
         android:orientation="vertical"
         android:background="#ffffff"
         >
-    <ImageButton
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:background="@drawable/btn_round"
-        android:drawablePadding="10dp"
-        android:gravity="end"
-        android:layout_gravity="end"
-        android:layout_marginEnd="18dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="5dp"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:src="@drawable/penciledit"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="ADD MORE VEHICLE"
         android:background="@color/colorPrimaryDark"
-        android:padding="15dp"
+        android:padding="18dp"
+        android:id="@+id/add"
         android:textColor="#ffffff"
         android:layout_marginTop="5dp"
         android:layout_gravity="center_vertical"

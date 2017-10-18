@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:weightSum="3"
+        android:weightSum="6"
         android:padding="18dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
@@ -35,33 +35,52 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_weight="2">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Inventory Name"
+                android:text="Price"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:paddingStart="18dp"
                 android:textColor="#ffffff"/>
 
         </LinearLayout>
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_weight="1.5">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Price"
+                android:text="Name"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:textColor="#ffffff"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Availablity"
                 android:gravity="center"
                 android:textColor="#ffffff"/>
 
         </LinearLayout>
+
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/facility">
+        android:id="@+id/facility"
+        android:background="@drawable/cdcdcd_white_stroke">
 
     </android.support.v7.widget.RecyclerView>
 
