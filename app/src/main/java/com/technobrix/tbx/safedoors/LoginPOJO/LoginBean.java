@@ -10,6 +10,12 @@ public class LoginBean {
     @SerializedName("socity_id")
     @Expose
     private String socityId;
+    @SerializedName("house_id")
+    @Expose
+    private String houseId;
+    @SerializedName("owner_name")
+    @Expose
+    private String ownerName;
     @SerializedName("userid")
     @Expose
     private String userid;
@@ -34,6 +40,9 @@ public class LoginBean {
     @SerializedName("message")
     @Expose
     private String message;
+    @SerializedName("category_count")
+    @Expose
+    private String categoryCount;
 
     public String getStatus() {
         return status;
@@ -49,6 +58,22 @@ public class LoginBean {
 
     public void setSocityId(String socityId) {
         this.socityId = socityId;
+    }
+
+    public String getHouseId() {
+        return houseId;
+    }
+
+    public void setHouseId(String houseId) {
+        this.houseId = houseId;
+    }
+
+    public String getOwnerName() {
+        return ownerName;
+    }
+
+    public void setOwnerName(String ownerName) {
+        this.ownerName = ownerName;
     }
 
     public String getUserid() {
@@ -114,5 +139,14 @@ public class LoginBean {
     public void setMessage(String message) {
         this.message = message;
     }
+
+    public String getCategoryCount() {
+        return categoryCount;
+    }
+
+    public void setCategoryCount(String categoryCount) {
+        this.categoryCount = categoryCount;
+    }
+
 
 }

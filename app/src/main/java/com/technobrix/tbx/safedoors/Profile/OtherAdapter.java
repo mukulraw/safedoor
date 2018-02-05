@@ -8,12 +8,24 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.technobrix.tbx.safedoors.AddFamilyPOJO.AddFamilyBean;
+import com.technobrix.tbx.safedoors.AllApiInterface;
 import com.technobrix.tbx.safedoors.GetVehiclePOJO.VehicleList;
 import com.technobrix.tbx.safedoors.R;
+import com.technobrix.tbx.safedoors.RemovePOJO.RemoveBean;
+import com.technobrix.tbx.safedoors.bean;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 
 public class OtherAdapter extends RecyclerView.Adapter<OtherAdapter.myviewholder> {
@@ -36,11 +48,52 @@ public class OtherAdapter extends RecyclerView.Adapter<OtherAdapter.myviewholder
     @Override
     public void onBindViewHolder(OtherAdapter.myviewholder holder, int position) {
 
-        VehicleList item = list.get(position);
+        final VehicleList item = list.get(position);
 
         holder.name.setText(item.getVehicleName());
-        holder.vehicle.setText(item.getVehicleNo());
-        holder.novehicle.setText(item.getNoOfVehicle());
+        holder.vehicleno.setText(item.getVehicleNo());
+        holder.rfid.setText(item.getRfId());
+
+        holder.close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                 bean b = (bean)context.getApplicationContext();
+
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl("http://safedoors.in")
+                        .addConverterFactory(ScalarsConverterFactory.create())
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build();
+
+                AllApiInterface cr = retrofit.create(AllApiInterface.class);
+
+                Call<AddFamilyBean> call = cr.remove(item.getVehicleId() , b.flat , b.socity);
+
+                call.enqueue(new Callback<AddFamilyBean>() {
+                    @Override
+                    public void onResponse(Call<AddFamilyBean> call, Response<AddFamilyBean> response) {
+
+                        Toast.makeText(context ,String.valueOf(response.body().getMessage()), Toast.LENGTH_SHORT).show();
+
+
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<AddFamilyBean> call, Throwable t) {
+
+
+
+
+                    }
+                });
+
+
+
+            }
+        });
+
 
     }
 
@@ -57,15 +110,15 @@ public class OtherAdapter extends RecyclerView.Adapter<OtherAdapter.myviewholder
 
     public  class myviewholder extends RecyclerView.ViewHolder {
 
-        TextView name , novehicle , vehicle ;
+        TextView name , vehicleno  , rfid;
         ImageButton close;
 
         public myviewholder(View itemView) {
             super(itemView);
 
-            name = (TextView)itemView.findViewById(R.id.car);
-            novehicle = (TextView)itemView.findViewById(R.id.one);
-            vehicle = (TextView)itemView.findViewById(R.id.vehicle);
+            name = (TextView)itemView.findViewById(R.id.vname);
+            vehicleno = (TextView)itemView.findViewById(R.id.vehicleno);
+            rfid = (TextView)itemView.findViewById(R.id.rfid);
             close = (ImageButton) itemView.findViewById(R.id.close);
         }
     }

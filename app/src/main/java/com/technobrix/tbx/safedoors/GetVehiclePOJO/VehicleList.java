@@ -21,6 +21,9 @@ public class VehicleList {
     @SerializedName("vehicle_no")
     @Expose
     private String vehicleNo;
+    @SerializedName("rf_id")
+    @Expose
+    private String rfId;
 
     public String getVehicleId() {
         return vehicleId;
@@ -54,6 +57,12 @@ public class VehicleList {
         this.vehicleNo = vehicleNo;
     }
 
+    public String getRfId() {
+        return rfId;
+    }
 
+    public void setRfId(String rfId) {
+        this.rfId = rfId;
+    }
 
 }

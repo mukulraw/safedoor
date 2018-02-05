@@ -1,5 +1,6 @@
 package com.technobrix.tbx.safedoors.SplashLogin;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,9 +13,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.technobrix.tbx.safedoors.AllApiInterface;
+import com.technobrix.tbx.safedoors.ConnectionDetector;
 import com.technobrix.tbx.safedoors.R;
 import com.technobrix.tbx.safedoors.RegisterPOJO.RegisterBean;
 import com.technobrix.tbx.safedoors.SocityPOJO.SocityBean;
+import com.technobrix.tbx.safedoors.Utils;
 import com.technobrix.tbx.safedoors.flatPOJO.flatBean;
 
 import java.util.ArrayList;
@@ -29,20 +32,24 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class Register extends AppCompatActivity {
-    EditText user,email,mobile,password,repass;
-    TextView ca;
+    EditText user, email, mobile, password, repass , owner;
+    TextView ca , terms , privacy;
     ProgressBar bar2;
-    Spinner sp , sp1;
+    Spinner sp, sp1;
     List<String> soc_id;
     List<String> soc_name;
     List<String> h_name;
     List<String> h_id;
-    String houseno = "" , socid = "";
+    String houseno = "", socid = "";
+
+    ConnectionDetector cd;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        cd = new ConnectionDetector(Register.this);
         user = (EditText) findViewById(R.id.user);
         email = (EditText) findViewById(R.id.email);
         mobile = (EditText) findViewById(R.id.mobile);
@@ -52,6 +59,9 @@ public class Register extends AppCompatActivity {
         repass = (EditText) findViewById(R.id.repass);
         bar2 = (ProgressBar) findViewById(R.id.progress2);
         ca = (TextView) findViewById(R.id.ca);
+        terms = (TextView) findViewById(R.id.term);
+        privacy = (TextView) findViewById(R.id.privacy);
+        owner = (EditText) findViewById(R.id.owner);
 
 
         soc_id = new ArrayList<>();
@@ -60,44 +70,71 @@ public class Register extends AppCompatActivity {
         h_name = new ArrayList<>();
 
 
-
         bar2.setVisibility(View.VISIBLE);
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://safedoors.in")
-                .addConverterFactory(ScalarsConverterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+        if (cd.isConnectingToInternet()){
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl("http://safedoors.in")
+                    .addConverterFactory(ScalarsConverterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
 
-        AllApiInterface cr = retrofit.create(AllApiInterface.class);
+            AllApiInterface cr = retrofit.create(AllApiInterface.class);
 
-        Call<SocityBean> call = cr.sb();
-        call.enqueue(new Callback<SocityBean>() {
-            @Override
-            public void onResponse(Call<SocityBean> call, Response<SocityBean> response) {
+            Call<SocityBean> call = cr.sb();
+            call.enqueue(new Callback<SocityBean>() {
+                @Override
+                public void onResponse(Call<SocityBean> call, Response<SocityBean> response) {
 
 
-        soc_id.clear();
-        soc_name.clear();
+                    soc_id.clear();
+                    soc_name.clear();
 
-        soc_name.add("Select Society");
+                    soc_name.add("Select Society");
 
-        for (int i = 0 ; i < response.body().getSocityList().size() ; i++)
-        {
-            soc_name.add(response.body().getSocityList().get(i).getSocityName());
-            soc_id.add(response.body().getSocityList().get(i).getId());
+                    for (int i = 0; i < response.body().getSocityList().size(); i++) {
+                        soc_name.add(response.body().getSocityList().get(i).getSocityName());
+                        soc_id.add(response.body().getSocityList().get(i).getId());
+                    }
+
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(Register.this, android.R.layout.simple_list_item_1, soc_name);
+
+                    sp.setAdapter(adapter);
+                    bar2.setVisibility(View.GONE);
+
+                }
+
+                @Override
+                public void onFailure(Call<SocityBean> call, Throwable t) {
+                    bar2.setVisibility(View.GONE);
+                }
+            });
+
+
+        }else {
+            Toast.makeText(Register.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
         }
 
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(Register.this , android.R.layout.simple_spinner_item , soc_name);
 
-        sp.setAdapter(adapter);
-        bar2.setVisibility(View.GONE);
+
+        terms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Intent i = new Intent(Register.this ,Register.class );
+                startActivity(i);
 
             }
+        });
 
+
+        privacy.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onFailure(Call<SocityBean> call, Throwable t) {
-bar2.setVisibility(View.GONE);
+            public void onClick(View view) {
+
+                Intent i = new Intent(Register.this ,Register.class );
+                startActivity(i);
             }
         });
 
@@ -107,55 +144,59 @@ bar2.setVisibility(View.GONE);
             @Override
             public void onItemSelected(AdapterView<?> adapterView, final View view, int i, long l) {
 
+                if (cd.isConnectingToInternet()){
+                    if (i > 0) {
 
-                if (i > 0)
-                {
+                        h_id.clear();
+                        h_name.clear();
 
-                    h_id.clear();
-                    h_name.clear();
+                        h_name.add("Select House");
 
-                    h_name.add("Select House");
+                        socid = soc_id.get(i - 1);
 
-                    socid = soc_id.get(i-1);
-
-                    bar2.setVisibility(View.VISIBLE);
-                    Retrofit retrofit = new Retrofit.Builder()
-                            .baseUrl("http://safedoors.in")
-                            .addConverterFactory(ScalarsConverterFactory.create())
-                            .addConverterFactory(GsonConverterFactory.create())
-                            .build();
-
+                        bar2.setVisibility(View.VISIBLE);
+                        Retrofit retrofit = new Retrofit.Builder()
+                                .baseUrl("http://safedoors.in")
+                                .addConverterFactory(ScalarsConverterFactory.create())
+                                .addConverterFactory(GsonConverterFactory.create())
+                                .build();
 
 
-                    AllApiInterface cr = retrofit.create(AllApiInterface.class);
+                        AllApiInterface cr = retrofit.create(AllApiInterface.class);
 
-                    Call<flatBean> call = cr.getFlats(soc_id.get(i-1));
+                        Call<flatBean> call = cr.getFlats(soc_id.get(i - 1));
 
-                    call.enqueue(new Callback<flatBean>() {
-                        @Override
-                        public void onResponse(Call<flatBean> call, Response<flatBean> response) {
+                        call.enqueue(new Callback<flatBean>() {
+                            @Override
+                            public void onResponse(Call<flatBean> call, Response<flatBean> response) {
 
-                            for (int i = 0 ; i < response.body().getFlatList().size() ; i++)
-                            {
-                                h_name.add(response.body().getFlatList().get(i).getHouseNo());
-                                h_id.add(response.body().getFlatList().get(i).getId());
+                                for (int i = 0; i < response.body().getFlatList().size(); i++) {
+                                    h_name.add(response.body().getFlatList().get(i).getHouseNo());
+                                    h_id.add(response.body().getFlatList().get(i).getId());
+                                }
+
+                                ArrayAdapter<String> adapter = new ArrayAdapter<String>(Register.this, android.R.layout.simple_list_item_1, h_name);
+
+                                sp1.setAdapter(adapter);
+                                bar2.setVisibility(View.GONE);
+
                             }
 
-                            ArrayAdapter<String> adapter = new ArrayAdapter<String>(Register.this , android.R.layout.simple_spinner_item , h_name);
+                            @Override
+                            public void onFailure(Call<flatBean> call, Throwable t) {
+                                bar2.setVisibility(View.GONE);
 
-                            sp1.setAdapter(adapter);
-                            bar2.setVisibility(View.GONE);
+                            }
+                        });
 
-                        }
+                    }
 
-                        @Override
-                        public void onFailure(Call<flatBean> call, Throwable t) {
-                            bar2.setVisibility(View.GONE);
-
-                        }
-                    });
-
+                }else {
+                    Toast.makeText(Register.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
                 }
+
+
+
 
 
             }
@@ -171,9 +212,8 @@ bar2.setVisibility(View.GONE);
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-                if (i>0)
-                {
-                    houseno = h_id.get(i-1);
+                if (i > 0) {
+                    houseno = h_id.get(i - 1);
                 }
 
             }
@@ -189,120 +229,139 @@ bar2.setVisibility(View.GONE);
             @Override
             public void onClick(View view) {
 
-                String e = email.getText().toString();
-                String u = user.getText().toString();
-                String m = mobile.getText().toString();
-
-                String p = password.getText().toString();
-                String r = repass.getText().toString();
-
-
-
-                if (e.length()>0)
+                if (cd.isConnectingToInternet())
                 {
 
-                    if (u.length()>0)
-                    {
 
-                        if (m.length()>0)
-                        {
+                    String e = email.getText().toString();
+                    String u = user.getText().toString();
+                    String m = mobile.getText().toString();
 
-                            if (p.length()>0)
-                            {
+                    String p = password.getText().toString();
+                    String r = repass.getText().toString();
+                    String o = owner.getText().toString();
 
-                                if (Objects.equals(p, r))
-                                {
+                    if (o.length()>0){
 
-                                    bar2.setVisibility(View.VISIBLE);
-                                    Retrofit retrofit = new Retrofit.Builder()
-                                            .baseUrl("http://safedoors.in")
-                                            .addConverterFactory(ScalarsConverterFactory.create())
-                                            .addConverterFactory(GsonConverterFactory.create())
-                                            .build();
 
-                                    AllApiInterface cr = retrofit.create(AllApiInterface.class);
+                        if (Utils.isValidMail(e)) {
 
-                                    Call<RegisterBean> call = cr.bean( u ,e,p, socid ,houseno,r);
-                                    call.enqueue(new Callback<RegisterBean>() {
-                                        @Override
-                                        public void onResponse(Call<RegisterBean> call, Response<RegisterBean> response) {
+                            if (u.length() > 0) {
 
-                                            if (response.body().getMessage() == "register successfully")
-                                            {
-                                                Toast.makeText(Register.this,response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                                                bar2.setVisibility(View.GONE);
+                                if (Utils.isValidMobile(m)) {
 
-                                                finish();
+                                    if (p.length() > 0) {
+
+                                        if (Objects.equals(p, r)) {
+
+                                            if (socid.length()>0){
+
+                                                if (houseno.length()>0){
+
+
+                                                    bar2.setVisibility(View.VISIBLE);
+                                                    Retrofit retrofit = new Retrofit.Builder()
+                                                            .baseUrl("http://safedoors.in")
+                                                            .addConverterFactory(ScalarsConverterFactory.create())
+                                                            .addConverterFactory(GsonConverterFactory.create())
+                                                            .build();
+
+                                                    AllApiInterface cr = retrofit.create(AllApiInterface.class);
+
+                                                    Call<RegisterBean> call = cr.bean(u, e, m, socid, houseno, r , o);
+                                                    call.enqueue(new Callback<RegisterBean>() {
+                                                        @Override
+                                                        public void onResponse(Call<RegisterBean> call, Response<RegisterBean> response) {
+
+                                                            if (Objects.equals(response.body().getMessage(), "register successfully")) {
+                                                                Toast.makeText(Register.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+
+                                                                if (Objects.equals(response.body().getStatus(), "4"))
+                                                                {
+                                                                    finish();
+                                                                }
+
+
+                                                                bar2.setVisibility(View.GONE);
+
+                                                                //finish();
+                                                            } else {
+                                                                Toast.makeText(Register.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                                                                bar2.setVisibility(View.GONE);
+
+                                                                //finish();
+
+                                                            }
+
+
+                                                        }
+
+                                                        @Override
+                                                        public void onFailure(Call<RegisterBean> call, Throwable t) {
+                                                            bar2.setVisibility(View.GONE);
+
+                                                        }
+                                                    });
+
+
+
+                                                }
+                                                else {
+
+                                                    Toast.makeText(Register.this, "Invalid House no.", Toast.LENGTH_SHORT).show();
+                                                }
+
+
+
                                             }
-                                            else
-                                            {
-                                                Toast.makeText(Register.this,response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                                                bar2.setVisibility(View.GONE);
 
+                                            else {
+
+                                                Toast.makeText(Register.this, "Please enter a valid society", Toast.LENGTH_SHORT).show();
                                             }
 
 
+                                        } else {
+                                            Toast.makeText(Register.this, "Password did not match", Toast.LENGTH_SHORT).show();
                                         }
 
-                                        @Override
-                                        public void onFailure(Call<RegisterBean> call, Throwable t) {
-                                            bar2.setVisibility(View.GONE);
+                                    } else {
+                                        Toast.makeText(Register.this, "Invalid Password", Toast.LENGTH_SHORT).show();
+                                        password.setError("Invalid Details");
+                                    }
 
-                                        }
-                                    });
-
-
-                                }
-                                else
-                                {
-                                    Toast.makeText(Register.this , "Password did not match" , Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(Register.this, "Invalid Phone", Toast.LENGTH_SHORT).show();
+                                    mobile.setError("Invalid Details");
                                 }
 
-                            }
-                            else
-                            {
-                                Toast.makeText(Register.this , "Invalid Password" , Toast.LENGTH_SHORT).show();
-                                password.setError("Invalid Details");
+                            } else {
+                                Toast.makeText(Register.this, "Invalid Username", Toast.LENGTH_SHORT).show();
+                                user.setError("Invalid Details");
                             }
 
-                        }
-                        else
-                        {
-                            Toast.makeText(Register.this , "Invalid Phone" , Toast.LENGTH_SHORT).show();
-                            mobile.setError("Invalid Details");
+                        } else {
+                            Toast.makeText(Register.this, "Invalid Email", Toast.LENGTH_SHORT).show();
+                            email.setError("Invalid Details");
                         }
 
                     }
-                    else
-                    {
-                        Toast.makeText(Register.this , "Invalid Username" , Toast.LENGTH_SHORT).show();
-                        user.setError("Invalid Details");
+
+                    else {
+                        Toast.makeText(Register.this, "Please enter a valid Owner Name", Toast.LENGTH_SHORT).show();
                     }
 
+
+
+                }else {
+
+                    Toast.makeText(Register.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
                 }
-                else
-                {
-                    Toast.makeText(Register.this , "Invalid Email" , Toast.LENGTH_SHORT).show();
-                    email.setError("Invalid Details");
-                }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
             }
         });
-
-
 
 
     }

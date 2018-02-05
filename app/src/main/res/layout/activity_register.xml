@@ -1,192 +1,263 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/splash"
-    android:layout_centerInParent="true"
-    >
-
-<RelativeLayout
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:layout_centerInParent="true"
+    android:background="@drawable/splash"
+    android:orientation="vertical">
 
-
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="#ffffff"
-        android:layout_margin="18dp">
+        android:layout_height="match_parent">
 
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Create account"
-            android:padding="15dp"
-            android:textSize="25sp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:gravity="center"/>
+            android:layout_height="match_parent"
+            android:layout_margin="18dp"
+            android:background="#ffffff"
+            android:orientation="vertical">
 
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Username"
-            android:padding="10dp"
-            android:id="@+id/user"
-            android:textColor="#999898"
-            android:inputType="textPersonName"
-            android:gravity="center_vertical"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:background="@drawable/black_white_stroke1"/>
-
-
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Email Id"
-            android:padding="10dp"
-            android:textColor="#999898"
-            android:id="@+id/email"
-            android:inputType="textEmailAddress"
-            android:gravity="center_vertical"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:background="@drawable/black_white_stroke1"/>
-
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Mobile No."
-            android:padding="10dp"
-            android:id="@+id/mobile"
-            android:textColor="#999898"
-            android:inputType="phone"
-            android:gravity="center_vertical"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/black_white_stroke1"/>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:id="@+id/relativesp1"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:padding="10dp"
-            android:background="@drawable/black_white_stroke1">
-
-            <Spinner
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/spinner"
-                android:gravity="end"
-                android:layout_gravity="center_vertical">
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:gravity="center"
+                android:padding="15dp"
+                android:text="Create account"
+                android:textSize="25sp" />
 
-            </Spinner>
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginTop="5dp"
-            android:id="@+id/relativesp2"
-            android:layout_marginBottom="5dp"
-            android:padding="10dp"
-            android:background="@drawable/black_white_stroke1">
 
-            <Spinner
+            <EditText
+                android:id="@+id/owner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/spinner1"
-                android:gravity="end"
-                android:layout_gravity="center_vertical">
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/black_white_stroke1"
+                android:gravity="center_vertical"
+                android:hint="Owner Name"
+                android:inputType="textPersonName"
+                android:padding="10dp"
+                android:textColor="#999898" />
 
-            </Spinner>
-        </RelativeLayout>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="password"
-            android:id="@+id/password"
-            android:padding="10dp"
-            android:inputType="textPassword"
-            android:gravity="center_vertical"
-            android:textColor="#999898"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/black_white_stroke1"/>
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Re Type password"
-            android:padding="10dp"
-            android:id="@+id/repass"
-            android:textColor="#999898"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
-            android:inputType="textPassword"
-            android:gravity="center_vertical"
-            android:layout_marginBottom="5dp"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/black_white_stroke1"/>
+            <EditText
+                android:id="@+id/user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/black_white_stroke1"
+                android:gravity="center_vertical"
+                android:hint="Username"
+                android:inputType="textPersonName"
+                android:padding="10dp"
+                android:textColor="#999898" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="There are many variations of passages
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/black_white_stroke1"
+                android:gravity="center_vertical"
+                android:hint="Email Id"
+                android:inputType="textEmailAddress"
+                android:padding="10dp"
+                android:textColor="#999898" />
+
+
+            <EditText
+                android:id="@+id/mobile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/black_white_stroke1"
+                android:gravity="center_vertical"
+                android:hint="Mobile No."
+                android:inputType="phone"
+                android:padding="10dp"
+                android:textColor="#999898" />
+
+            <RelativeLayout
+                android:id="@+id/relativesp1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/black_white_stroke1"
+                android:minHeight="45dp"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="end">
+
+                </Spinner>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relativesp2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/black_white_stroke1"
+                android:minHeight="45dp"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/spinner1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="end">
+
+                </Spinner>
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/black_white_stroke1"
+                android:gravity="center_vertical"
+                android:hint="password"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:textColor="#999898" />
+
+            <EditText
+                android:id="@+id/repass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/black_white_stroke1"
+                android:gravity="center_vertical"
+                android:hint="Re Type password"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:textColor="#999898" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:hint="There are many variations of passages
  of Lorem Ipsum available,but the "
-            android:layout_gravity="center_vertical"
-            android:gravity="center"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            />
+                android:visibility="gone" />
 
-        <TextView
-            android:id="@+id/ca"
-            android:layout_width="match_parent"
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                >
+
+
+                <CheckBox
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/check"
+                    android:textSize="12sp"
+                    android:buttonTint="#000"
+                    android:text="I Accept "/>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Terms and condition"
+                    android:id="@+id/term"
+                    android:textSize="12sp"
+                    android:textColor="@color/colorPrimary"/>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=" And"
+                    android:textSize="12sp"
+                    />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=" Privacy policy"
+                    android:id="@+id/privacy"
+                    android:textSize="12sp"
+                    android:textColor="@color/colorPrimary"/>
+
+
+
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/ca"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/red_round"
+                android:gravity="center"
+                android:hint="CREATE ACCOUNT"
+                android:padding="18dp"
+                android:textColor="#ffffff"
+                android:textColorHint="#ffffff" />
+
+
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progress2"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:background="@drawable/red_round"
-            android:gravity="center"
-            android:hint="CREATE ACCOUNT"
-            android:padding="18dp"
-            android:textColorHint="#ffffff"
-            android:textColor="#ffffff" />
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
 
-
-
-    </LinearLayout>
-    <ProgressBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/progress2"
-        android:visibility="gone"/>
-
-</RelativeLayout>
-</ScrollView>
+    </RelativeLayout>
+</android.support.v4.widget.NestedScrollView>
 
 
 

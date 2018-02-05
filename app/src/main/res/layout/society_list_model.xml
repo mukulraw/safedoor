@@ -48,7 +48,6 @@
                     android:paddingEnd="10dp"
                     android:text="100"
                     android:id="@+id/number"
-                    android:autoLink="phone"
                     android:paddingBottom="5dp"
                     android:textSize="35sp"
                     android:textStyle="bold"

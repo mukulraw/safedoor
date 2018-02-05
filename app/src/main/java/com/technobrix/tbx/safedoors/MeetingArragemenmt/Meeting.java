@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -89,18 +90,18 @@ public class Meeting extends Fragment {
                     @Override
                     public void onClick(View view) {
 
-
                         String day = String.valueOf(picker.getDayOfMonth());
                         String month = String.valueOf(picker.getMonth() + 1);
                         String year = String.valueOf(picker.getYear());
 
-                        time1.setText(day + "-" + month + "-" + year);
+                        date = year + "-" + month + "-" + day;
+
+                        time1.setText(year + "-" + month + "-" + day);
 
                         dialog.dismiss();
 
                     }
                 });
-
 
             }
         });
@@ -124,6 +125,8 @@ public class Meeting extends Fragment {
 
                         String hour = String.valueOf(picker.getCurrentHour());
                         String minute = String.valueOf(picker.getCurrentMinute());
+
+                        starttime = hour + " : " + minute;
 
                         time2.setText(hour + " : " + minute);
                         dialog.dismiss();
@@ -161,13 +164,11 @@ public class Meeting extends Fragment {
 
                     }
                     });
-
-
-
                     }
         });
 
         submit.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
 
@@ -185,7 +186,15 @@ public class Meeting extends Fragment {
                         .build();
 
                 AllApiInterface cr = retrofit.create(AllApiInterface.class);
-                Call<CreateBean> call = cr.creat(b.socity_id , b.userId ,date , starttime , t  , des);
+                Call<CreateBean> call = cr.creat(b.socity , b.userId ,date , starttime , t  , des);
+
+                Log.d("hdfshg" , b.socity);
+                Log.d("hdfshg" , b.userId);
+                Log.d("hdfshg" , date);
+                Log.d("hdfshg" , starttime);
+                Log.d("hdfshg" , t);
+                Log.d("hdfshg" , des);
+
                 call.enqueue(new Callback<CreateBean>() {
                     @Override
                     public void onResponse(Call<CreateBean> call, Response<CreateBean> response) {

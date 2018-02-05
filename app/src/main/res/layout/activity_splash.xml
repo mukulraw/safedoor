@@ -7,49 +7,10 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/splash"
-            android:scaleType="centerCrop"
+            android:src="@drawable/logoo"
+            android:padding="10dp"
+            android:scaleType="centerInside"
             />
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/dard_shade"
-            />
-
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_centerInParent="true"
-
-    android:orientation="vertical"
-    >
-
-
-
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:background="@drawable/btn_round"
-            android:drawablePadding="10dp"
-            android:gravity="center"
-            android:layout_gravity="center"
-            />
-
-
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="00dp"
-            android:textColor="#ffffff"
-            android:padding="30dp"
-            android:gravity="center_horizontal"
-            android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry."/>
-
-
-</LinearLayout>
 
 
         <ProgressBar

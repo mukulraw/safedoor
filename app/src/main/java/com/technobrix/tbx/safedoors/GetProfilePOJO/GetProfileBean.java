@@ -5,10 +5,12 @@ import com.google.gson.annotations.SerializedName;
 
 public class GetProfileBean {
 
-
     @SerializedName("userid")
     @Expose
     private String userid;
+    @SerializedName("owner_name")
+    @Expose
+    private String ownerName;
     @SerializedName("username")
     @Expose
     private String username;
@@ -49,6 +51,14 @@ public class GetProfileBean {
 
     public void setUserid(String userid) {
         this.userid = userid;
+    }
+
+    public String getOwnerName() {
+        return ownerName;
+    }
+
+    public void setOwnerName(String ownerName) {
+        this.ownerName = ownerName;
     }
 
     public String getUsername() {
@@ -138,6 +148,5 @@ public class GetProfileBean {
     public void setPermanentAddress(String permanentAddress) {
         this.permanentAddress = permanentAddress;
     }
-
 
 }

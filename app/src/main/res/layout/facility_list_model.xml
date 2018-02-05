@@ -7,6 +7,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="6"
         android:padding="5dp">
@@ -15,17 +21,18 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="10dp"
+            android:layout_margin="5dp"
+            android:gravity="center"
             android:layout_gravity="center_vertical"
             android:layout_weight="1">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/one"
-                android:textStyle="bold"
-                android:textColor="#000"
-                android:text="1."/>
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:scaleType="centerCrop"
+                android:id="@+id/image"
+                />
 
 
         </LinearLayout>
@@ -35,7 +42,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="10dp"
             android:layout_gravity="center_vertical"
             android:gravity="center"
             android:layout_weight="2">
@@ -43,12 +49,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Name"
-                android:id="@+id/text"
-                android:textStyle="bold"
+                android:id="@+id/name"
+                android:textSize="12sp"
                 android:textColor="#000"
                 android:layout_gravity="center_vertical"
-                android:gravity="center_vertical"/>
+                android:gravity="start"/>
 
 
         </LinearLayout>
@@ -57,7 +62,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="10dp"
             android:layout_gravity="center_vertical"
             android:gravity="center"
             android:layout_weight="1.5">
@@ -65,12 +69,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="LOREM"
-                android:id="@+id/name"
-                android:textStyle="bold"
+                android:id="@+id/text"
+                android:textSize="12sp"
                 android:textColor="#000"
                 android:layout_gravity="center_vertical"
-                android:gravity="center_vertical"/>
+                android:gravity="start"/>
 
 
         </LinearLayout>
@@ -98,8 +101,19 @@
 
     </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:id="@+id/linear"
+            />
+    </LinearLayout>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#cdcdcd"/>
+        android:background="#cdcdcd"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"/>
 </LinearLayout>

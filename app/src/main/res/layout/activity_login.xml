@@ -31,11 +31,12 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email Id"
+            android:hint="UserName"
             android:textColorHint="#ffffff"
             android:padding="15dp"
             android:textSize="20sp"
             android:id="@+id/mail"
+            android:inputType="text"
             android:textColor="#ffffff"
             android:background="@drawable/sign_in_stroke"
             android:layout_marginStart="30dp"
@@ -64,7 +65,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="I FORGET MY PASSWORD"
+            android:text="I FORGOT MY PASSWORD"
             android:padding="10dp"
             android:id="@+id/forget"
             android:textSize="15sp"

@@ -25,7 +25,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="12dp"
-        android:src="@drawable/pencil"
+        android:src="@drawable/plus"
+        android:id="@+id/plus"
 
         />
 
@@ -38,4 +39,5 @@
         android:id="@+id/progress"
         android:layout_centerInParent="true"
         android:visibility="gone"/>
+
 </RelativeLayout>

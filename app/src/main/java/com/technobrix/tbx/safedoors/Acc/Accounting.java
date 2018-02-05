@@ -55,7 +55,6 @@ public class Accounting extends Fragment {
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
                 ft.commit();
 
-
             }
         });
 
@@ -100,5 +99,6 @@ public class Accounting extends Fragment {
             }
         });
         return view;
+
     }
 }

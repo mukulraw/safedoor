@@ -3,6 +3,7 @@ package com.technobrix.tbx.safedoors.Profile;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,9 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.technobrix.tbx.safedoors.Add;
 import com.technobrix.tbx.safedoors.AllApiInterface;
+import com.technobrix.tbx.safedoors.ConnectionDetector;
 import com.technobrix.tbx.safedoors.FamilyPOJO.FamilyBean;
 import com.technobrix.tbx.safedoors.GetFamilyPOJO.FamiltList;
 import com.technobrix.tbx.safedoors.GetFamilyPOJO.GetFamilyBean;
@@ -38,7 +41,9 @@ public class FamilyInfoFragment extends Fragment {
     familyAdapter adapter;
     List<FamiltList> list;
     ProgressBar bar;
-    TextView add;
+    FloatingActionButton add;
+
+    ConnectionDetector cd;
 
 
     @Nullable
@@ -47,9 +52,11 @@ public class FamilyInfoFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.family_info , container, false);
 
+        cd = new ConnectionDetector(getContext());
+
         recyclerView = (RecyclerView)v.findViewById(R.id.family);
 
-        add = (TextView)v.findViewById(R.id.add);
+        add = (FloatingActionButton)v.findViewById(R.id.add);
 
         bar = (ProgressBar) v.findViewById(R.id.bar);
 
@@ -65,36 +72,44 @@ public class FamilyInfoFragment extends Fragment {
 
         recyclerView.setAdapter(adapter);
 
-        bar.setVisibility(View.VISIBLE);
 
-        bean b = (bean)getContext().getApplicationContext();
+        if (cd.isConnectingToInternet()){
+            bar.setVisibility(View.VISIBLE);
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://safedoors.in")
-                .addConverterFactory(ScalarsConverterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+            bean b = (bean)getContext().getApplicationContext();
 
-        AllApiInterface cr = retrofit.create(AllApiInterface.class);
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl("http://safedoors.in")
+                    .addConverterFactory(ScalarsConverterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
 
-        Call<GetFamilyBean> call = cr.family(b.userId);
+            AllApiInterface cr = retrofit.create(AllApiInterface.class);
 
-        call.enqueue(new Callback<GetFamilyBean>() {
-            @Override
-            public void onResponse(Call<GetFamilyBean> call, Response<GetFamilyBean> response) {
+            Call<GetFamilyBean> call = cr.family(b.house_id);
 
-               adapter.Setgriddata(response.body().getFamiltList());
+            call.enqueue(new Callback<GetFamilyBean>() {
+                @Override
+                public void onResponse(Call<GetFamilyBean> call, Response<GetFamilyBean> response) {
 
-               bar.setVisibility(View.GONE);
-            }
+                    adapter.Setgriddata(response.body().getFamiltList());
 
-            @Override
-            public void onFailure(Call<GetFamilyBean> call, Throwable t) {
+                    bar.setVisibility(View.GONE);
+                }
 
-                bar.setVisibility(View.GONE);
+                @Override
+                public void onFailure(Call<GetFamilyBean> call, Throwable t) {
 
-            }
-        });
+                    bar.setVisibility(View.GONE);
+
+                }
+            });
+
+
+        }else {
+            Toast.makeText(getContext(), "No Internet Connection", Toast.LENGTH_SHORT).show();
+        }
+
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override

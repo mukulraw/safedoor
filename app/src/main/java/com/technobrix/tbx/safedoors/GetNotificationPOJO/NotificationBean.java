@@ -20,4 +20,5 @@ public class NotificationBean {
     public void setNotificationList(List<NotificationList> notificationList) {
         this.notificationList = notificationList;
     }
+
 }

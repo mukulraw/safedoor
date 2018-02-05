@@ -33,7 +33,7 @@ public class BillType extends Fragment {
                 FragmentTransaction ft = fragmentManager.beginTransaction();
                 PaidBill fragment = new PaidBill();
                 ft.replace(R.id.replace, fragment);
-                //ft.addToBackStack(null);
+                ft.addToBackStack(null);
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
                 ft.commit();
 

@@ -8,7 +8,6 @@ import java.util.List;
 
 public class GetFamilyBean {
 
-
     @SerializedName("familt_list")
     @Expose
     private List<FamiltList> familtList = null;
@@ -20,5 +19,4 @@ public class GetFamilyBean {
     public void setFamiltList(List<FamiltList> familtList) {
         this.familtList = familtList;
     }
-
 }

@@ -2,7 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.technobrix.tbx.safedoors">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:name=".bean"
@@ -12,24 +17,94 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" />
-        <activity android:name=".HelpDesk.HelpOne" />
-        <activity android:name=".SplashLogin.Login" />
-        <activity android:name=".SplashLogin.GetStarted" />
-        <activity android:name=".SplashLogin.Register" />
-        <activity android:name=".SplashLogin.Splash">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Desscusion.HelpOne"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SplashLogin.Login"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateVisible|adjustPan" />
+        <activity
+            android:name=".SplashLogin.GetStarted"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SplashLogin.Register"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateVisible|adjustPan" />
+        <activity
+            android:name=".SplashLogin.Splash"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Add" />
-        <activity android:name=".GateKeeper" />
-        <activity android:name=".Notification" />
-        <activity android:name=".Profile.Edit" />
-        <activity android:name=".Profile.ProfileEdit" />
-        <activity android:name=".AddVehicle"></activity>
+        <activity
+            android:name=".Add"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".GateKeeper"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Notification"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Profile.Edit"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Profile.ProfileEdit"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AddVehicle"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Desscusion.Add"
+            android:screenOrientation="portrait" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <activity
+            android:name=".NewGatekeeper.GateHome"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".NewGatekeeper.RegularVisitor"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".NewGatekeeper.NewVisitor"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".NewGatekeeper.Notification"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".NewGatekeeper.Home"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Profile.ViewFamilyInfo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".BuyTicket"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Feedback" />
+        <activity android:name=".example" />
+        <activity android:name=".PlusVisitor" />
+        <activity android:name=".NewNotification" />
+        <activity android:name=".RegularNotification" />
+        <activity android:name=".DeveloperFeedback" />
+        <activity android:name=".AddStaff"></activity>
     </application>
 
 </manifest>

@@ -31,9 +31,9 @@ public class HelpDesk extends Fragment {
         recyclerView = (RecyclerView)view.findViewById(R.id.helpdesk);
         progressBar = (ProgressBar) view.findViewById(R.id.progress);
         manager = new GridLayoutManager(getContext(),1);
-        adapeter = new HelpDiskAdapeter(getContext());
-        recyclerView.setLayoutManager(manager);
-        recyclerView.setAdapter(adapeter);
+        //adapeter = new HelpDiskAdapeter(getContext());
+        //recyclerView.setLayoutManager(manager);
+        //recyclerView.setAdapter(adapeter);
         return  view;
     }
 }

@@ -10,8 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.technobrix.tbx.safedoors.AllApiInterface;
+import com.technobrix.tbx.safedoors.ConnectionDetector;
 import com.technobrix.tbx.safedoors.GetProfilePOJO.GetProfileBean;
 import com.technobrix.tbx.safedoors.R;
 import com.technobrix.tbx.safedoors.bean;
@@ -25,9 +27,11 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class ProfileInfoFragment extends Fragment {
 
-    TextView email , dob , fn, pa, male, edit;
-
+    TextView email , dob , flat, pa, male, edit , society , age , phone , name;
     ProgressBar bar;
+
+    ConnectionDetector cd;
+
 
     @Nullable
     @Override
@@ -35,12 +39,18 @@ public class ProfileInfoFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.profile_info_fragment , container , false);
 
+        cd = new ConnectionDetector(getContext());
+
         email = (TextView)view.findViewById(R.id.email);
         dob = (TextView)view.findViewById(R.id.dob);
-        fn = (TextView)view.findViewById(R.id.fn);
-        pa = (TextView)view.findViewById(R.id.pa);
+        flat = (TextView)view.findViewById(R.id.flat);
+        pa = (TextView)view.findViewById(R.id.address);
         male = (TextView)view.findViewById(R.id.male);
         edit = (TextView)view.findViewById(R.id.edit);
+        society = (TextView)view.findViewById(R.id.society);
+        age = (TextView)view.findViewById(R.id.age);
+        phone = (TextView)view.findViewById(R.id.phone);
+       // name = (TextView)view.findViewById(R.id.name);
         bar = (ProgressBar) view.findViewById(R.id.progress);
 
         edit.setOnClickListener(new View.OnClickListener() {
@@ -51,49 +61,60 @@ public class ProfileInfoFragment extends Fragment {
             }
         });
 
-        bar.setVisibility(View.VISIBLE);
+        if (cd.isConnectingToInternet()){
 
-        bean b = (bean)getContext().getApplicationContext();
+            bar.setVisibility(View.VISIBLE);
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://safedoors.in")
-                .addConverterFactory(ScalarsConverterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+            bean b = (bean)getContext().getApplicationContext();
 
-        AllApiInterface cr = retrofit.create(AllApiInterface.class);
-        Call<GetProfileBean> call = cr.getprofile(b.userId);
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl("http://safedoors.in")
+                    .addConverterFactory(ScalarsConverterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
 
-        Log.d("nisha" , b.userId);
+            AllApiInterface cr = retrofit.create(AllApiInterface.class);
+            Call<GetProfileBean> call = cr.getprofile(b.userId);
 
-        call.enqueue(new Callback<GetProfileBean>() {
-            @Override
-            public void onResponse(Call<GetProfileBean> call, Response<GetProfileBean> response) {
+            Log.d("nisha" , b.userId);
 
-                email.setText(response.body().getEmail());
+            call.enqueue(new Callback<GetProfileBean>() {
+                @Override
+                public void onResponse(Call<GetProfileBean> call, Response<GetProfileBean> response) {
 
-                Log.d("asdasd" , response.body().getEmail());
+                    email.setText(response.body().getEmail());
 
-                dob.setText(response.body().getDob());
-                pa.setText(response.body().getPermanentAddress());
-                male.setText(response.body().getGender());
+                    Log.d("asdasd" , response.body().getEmail());
 
-                Log.d("hmm" , "response");
+                    dob.setText(response.body().getDob());
+                    pa.setText(response.body().getPermanentAddress());
+                    male.setText(response.body().getGender());
+                    phone.setText(response.body().getPhone());
+                    flat.setText(response.body().getFlatId());
+                    society.setText(response.body().getSocityName());
+                    email.setText(response.body().getEmail());
+                    age.setText(response.body().getAge());
 
-                bar.setVisibility(View.GONE);
+                    bar.setVisibility(View.GONE);
 
 
-            }
+                }
 
-            @Override
-            public void onFailure(Call<GetProfileBean> call, Throwable t) {
+                @Override
+                public void onFailure(Call<GetProfileBean> call, Throwable t) {
 
-                bar.setVisibility(View.GONE);
+                    bar.setVisibility(View.GONE);
 
-                Log.d("mmmm" , t.toString());
+                    Log.d("mmmm" , t.toString());
 
-            }
-        });
+                }
+            });
+
+        }else {
+            Toast.makeText(getContext(), "No Internet Connection", Toast.LENGTH_SHORT).show();
+        }
+
+
         return  view;
     }
 }

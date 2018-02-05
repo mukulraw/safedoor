@@ -1,6 +1,9 @@
 package com.technobrix.tbx.safedoors.NoticeBoard;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.technobrix.tbx.safedoors.NoticeListPOJO.NoticeList;
+import com.technobrix.tbx.safedoors.Profile.ViewFamilyInfo;
 import com.technobrix.tbx.safedoors.R;
 
 import java.util.ArrayList;
@@ -21,34 +25,54 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.MyViewHold
     Context context;
     List<NoticeList> list = new ArrayList<>();
 
-    public NoticeAdapter(Context context , List<NoticeList> list){
+    public NoticeAdapter(Context context, List<NoticeList> list) {
 
         this.context = context;
         this.list = list;
     }
 
-    public void setGridData(List<NoticeList> list)
-    {
-        this.list = list;
-        notifyDataSetChanged();
-    }
-
     @Override
     public NoticeAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(context).inflate(R.layout.notice_board_list_model , parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.notice_board_list_model, parent, false);
         return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(NoticeAdapter.MyViewHolder holder, int position) {
-        NoticeList item = list.get(position);
 
-
-        holder.title.setText(item.getNotice());
+        final NoticeList item = list.get(position);
+        holder.title.setText(item.getTitle());
         holder.date.setText(item.getDate());
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                FragmentManager fragmentManager = ((AppCompatActivity) context).getSupportFragmentManager();
+                FragmentTransaction ft = fragmentManager.beginTransaction();
+                NoticeBoard2 fragment = new NoticeBoard2();
+                Bundle b = new Bundle();
+                b.putString("title", item.getTitle());
+                b.putString("date", item.getDate());
+                b.putString("description", item.getDescription());
+
+                fragment.setArguments(b);
+                ft.replace(R.id.replace, fragment);
+                ft.addToBackStack(null);
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
+                ft.commit();
+
+
+            }
+        });
+
+
+    }
+
+    public void setGridData(List<NoticeList> list) {
+        this.list = list;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -58,25 +82,18 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.MyViewHold
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView title , date;
+        TextView title, date, des;
 
         public MyViewHolder(View itemView) {
             super(itemView);
 
-            title = (TextView)itemView.findViewById(R.id.title);
-            date = (TextView)itemView.findViewById(R.id.date);
+            title = (TextView) itemView.findViewById(R.id.title);
+            date = (TextView) itemView.findViewById(R.id.date);
+            des = (TextView) itemView.findViewById(R.id.notice);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
-                    FragmentManager fragmentManager =((AppCompatActivity)context).getSupportFragmentManager();
-                    FragmentTransaction ft = fragmentManager.beginTransaction();
-                    NoticeBoard2 fragment = new NoticeBoard2();
-                    ft.replace(R.id.replace, fragment);
-                    ft.addToBackStack(null);
-                    ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
-                    ft.commit();
 
 
                 }
