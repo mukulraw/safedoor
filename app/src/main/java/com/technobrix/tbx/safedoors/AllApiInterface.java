@@ -160,6 +160,7 @@ public interface AllApiInterface {
              @Part("address") String add,
              @Part("age") String age,
              @Part("parking") String pa,
+             @Part("house_no") String h,
              @Part("fullname") String f);
 
 
@@ -476,7 +477,9 @@ public interface AllApiInterface {
              @Part("visitor_name") String vn,
              @Part("house_no") String hn,
              @Part MultipartBody.Part file,
-             @Part MultipartBody.Part file1
+             @Part MultipartBody.Part file1,
+             @Part("car_no") String h
+
             );
 
 

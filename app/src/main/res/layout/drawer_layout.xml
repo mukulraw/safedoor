@@ -88,7 +88,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:drawablePadding="10dp"
-            android:drawableStart="@drawable/use"
+            android:drawableStart="@drawable/ic_profile"
             android:gravity="center_vertical"
             android:padding="10dp"
             android:text="Profile" />
@@ -100,7 +100,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:drawablePadding="10dp"
-            android:drawableStart="@drawable/useedit"
+            android:drawableStart="@drawable/user"
             android:gravity="center_vertical"
             android:padding="10dp"
             android:text="Accounting" />
@@ -111,7 +111,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:drawablePadding="10dp"
-            android:drawableStart="@drawable/boa"
+            android:drawableStart="@drawable/notice"
             android:gravity="center_vertical"
             android:padding="10dp"
             android:text="Notice Board" />
@@ -122,7 +122,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawablePadding="10dp"
-            android:drawableStart="@drawable/even"
+            android:drawableStart="@drawable/calender"
             android:gravity="center_vertical"
             android:padding="10dp"
             android:text="Event" />
@@ -133,7 +133,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawablePadding="10dp"
-            android:drawableStart="@drawable/facilit"
+            android:drawableStart="@drawable/hospital"
             android:gravity="center_vertical"
             android:padding="10dp"
             android:text="Facility Booking" />
@@ -144,7 +144,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawablePadding="10dp"
-            android:drawableStart="@drawable/bookingg"
+            android:drawableStart="@drawable/list"
             android:gravity="center_vertical"
             android:padding="10dp"
             android:text="My Bookings" />
@@ -155,7 +155,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawablePadding="10dp"
-            android:drawableStart="@drawable/begs"
+            android:drawableStart="@drawable/ic_sort_ascending"
             android:gravity="center_vertical"
             android:padding="10dp"
             android:text="Inventory" />
@@ -166,7 +166,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawablePadding="10dp"
-            android:drawableStart="@drawable/helpp"
+            android:drawableStart="@drawable/question"
             android:gravity="center_vertical"
             android:padding="10dp"
             android:text="Help Desk" />
@@ -177,7 +177,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawablePadding="10dp"
-            android:drawableStart="@drawable/dissc"
+            android:drawableStart="@drawable/ic_curriculum"
             android:gravity="center_vertical"
             android:padding="10dp"
             android:text="Discussion Forum" />
@@ -188,7 +188,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawablePadding="10dp"
-            android:drawableStart="@drawable/gatee"
+            android:drawableStart="@drawable/ic_delivery_man"
             android:gravity="center_vertical"
             android:padding="10dp"
             android:text="Gate Keeper" />
@@ -199,7 +199,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawablePadding="10dp"
-            android:drawableStart="@drawable/feedback"
+            android:drawableStart="@drawable/ic_chat"
             android:gravity="center_vertical"
             android:padding="10dp"
             android:text="Feedback" />
@@ -226,7 +226,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawablePadding="10dp"
-            android:drawableStart="@drawable/logout"
+            android:drawableStart="@drawable/logout1"
             android:gravity="center_vertical"
             android:padding="10dp"
             android:text="Logout"/>

@@ -561,6 +561,8 @@ public class NewVisitor extends AppCompatActivity {
             holder.time.setText(item.getIntime());
 
             holder.visitor.setText(item.getVisitorName());
+            holder.car.setText(item.getCarNo());
+
 
             holder.house.setText(item.getHouseNo());
 
@@ -744,7 +746,7 @@ public class NewVisitor extends AppCompatActivity {
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
 
-            TextView time, visitor, house, comment, date;
+            TextView time, visitor, house, comment, date , car;
             ImageButton out;
             CircleImageView image , image1;
 
@@ -753,6 +755,7 @@ public class NewVisitor extends AppCompatActivity {
 
 
                 time = (TextView) itemView.findViewById(R.id.time);
+                car = (TextView) itemView.findViewById(R.id.car);
                 visitor = (TextView) itemView.findViewById(R.id.visitor);
                 house = (TextView) itemView.findViewById(R.id.house);
                 comment = (TextView) itemView.findViewById(R.id.comment);

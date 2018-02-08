@@ -35,6 +35,9 @@ public class GetProfileBean {
     @SerializedName("gender")
     @Expose
     private String gender;
+    @SerializedName("parking_no")
+    @Expose
+    private String parkingNo;
     @SerializedName("dob")
     @Expose
     private String dob;
@@ -125,6 +128,14 @@ public class GetProfileBean {
         this.gender = gender;
     }
 
+    public String getParkingNo() {
+        return parkingNo;
+    }
+
+    public void setParkingNo(String parkingNo) {
+        this.parkingNo = parkingNo;
+    }
+
     public String getDob() {
         return dob;
     }
@@ -148,5 +159,4 @@ public class GetProfileBean {
     public void setPermanentAddress(String permanentAddress) {
         this.permanentAddress = permanentAddress;
     }
-
 }

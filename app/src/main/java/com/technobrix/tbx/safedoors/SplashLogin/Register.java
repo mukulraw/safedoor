@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
@@ -43,6 +44,7 @@ public class Register extends AppCompatActivity {
     String houseno = "", socid = "";
 
     ConnectionDetector cd;
+    CheckBox check;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -62,6 +64,7 @@ public class Register extends AppCompatActivity {
         terms = (TextView) findViewById(R.id.term);
         privacy = (TextView) findViewById(R.id.privacy);
         owner = (EditText) findViewById(R.id.owner);
+        check = (CheckBox) findViewById(R.id.check);
 
 
         soc_id = new ArrayList<>();
@@ -122,7 +125,8 @@ public class Register extends AppCompatActivity {
             public void onClick(View view) {
 
 
-                Intent i = new Intent(Register.this ,Register.class );
+                Intent i = new Intent(Register.this , Terms.class);
+                i.putExtra("url" , "http://safedoors.in/privacy-policy.html");
                 startActivity(i);
 
             }
@@ -132,8 +136,8 @@ public class Register extends AppCompatActivity {
         privacy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Intent i = new Intent(Register.this ,Register.class );
+                Intent i = new Intent(Register.this , Terms.class);
+                i.putExtra("url" , "http://safedoors.in/privacy-policy.html");
                 startActivity(i);
             }
         });
@@ -231,8 +235,6 @@ public class Register extends AppCompatActivity {
 
                 if (cd.isConnectingToInternet())
                 {
-
-
                     String e = email.getText().toString();
                     String u = user.getText().toString();
                     String m = mobile.getText().toString();
@@ -240,6 +242,7 @@ public class Register extends AppCompatActivity {
                     String p = password.getText().toString();
                     String r = repass.getText().toString();
                     String o = owner.getText().toString();
+                    String c = check.getText().toString();
 
                     if (o.length()>0){
 
@@ -258,50 +261,59 @@ public class Register extends AppCompatActivity {
 
                                                 if (houseno.length()>0){
 
+                                                    if (check.isChecked()){
 
-                                                    bar2.setVisibility(View.VISIBLE);
-                                                    Retrofit retrofit = new Retrofit.Builder()
-                                                            .baseUrl("http://safedoors.in")
-                                                            .addConverterFactory(ScalarsConverterFactory.create())
-                                                            .addConverterFactory(GsonConverterFactory.create())
-                                                            .build();
 
-                                                    AllApiInterface cr = retrofit.create(AllApiInterface.class);
+                                                        bar2.setVisibility(View.VISIBLE);
+                                                        Retrofit retrofit = new Retrofit.Builder()
+                                                                .baseUrl("http://safedoors.in")
+                                                                .addConverterFactory(ScalarsConverterFactory.create())
+                                                                .addConverterFactory(GsonConverterFactory.create())
+                                                                .build();
 
-                                                    Call<RegisterBean> call = cr.bean(u, e, m, socid, houseno, r , o);
-                                                    call.enqueue(new Callback<RegisterBean>() {
-                                                        @Override
-                                                        public void onResponse(Call<RegisterBean> call, Response<RegisterBean> response) {
+                                                        AllApiInterface cr = retrofit.create(AllApiInterface.class);
 
-                                                            if (Objects.equals(response.body().getMessage(), "register successfully")) {
-                                                                Toast.makeText(Register.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                                                        Call<RegisterBean> call = cr.bean(u, e, m, socid, houseno, r , o);
+                                                        call.enqueue(new Callback<RegisterBean>() {
+                                                            @Override
+                                                            public void onResponse(Call<RegisterBean> call, Response<RegisterBean> response) {
 
-                                                                if (Objects.equals(response.body().getStatus(), "4"))
-                                                                {
-                                                                    finish();
+                                                                if (Objects.equals(response.body().getMessage(), "register successfully")) {
+                                                                    Toast.makeText(Register.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+
+                                                                    if (Objects.equals(response.body().getStatus(), "4"))
+                                                                    {
+                                                                        finish();
+                                                                    }
+
+
+                                                                    bar2.setVisibility(View.GONE);
+
+                                                                    //finish();
+                                                                } else {
+                                                                    Toast.makeText(Register.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                                                                    bar2.setVisibility(View.GONE);
+
+                                                                    //finish();
+
                                                                 }
 
 
-                                                                bar2.setVisibility(View.GONE);
-
-                                                                //finish();
-                                                            } else {
-                                                                Toast.makeText(Register.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                                                                bar2.setVisibility(View.GONE);
-
-                                                                //finish();
-
                                                             }
 
+                                                            @Override
+                                                            public void onFailure(Call<RegisterBean> call, Throwable t) {
+                                                                bar2.setVisibility(View.GONE);
 
-                                                        }
+                                                            }
+                                                        });
 
-                                                        @Override
-                                                        public void onFailure(Call<RegisterBean> call, Throwable t) {
-                                                            bar2.setVisibility(View.GONE);
 
-                                                        }
-                                                    });
+                                                    }else {
+                                                        Toast.makeText(Register.this, "Please accept all conditions", Toast.LENGTH_SHORT).show();
+                                                    }
+
+
 
 
 

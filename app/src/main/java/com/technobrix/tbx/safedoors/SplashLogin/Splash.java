@@ -64,8 +64,6 @@ public class Splash extends AppCompatActivity {
         bar = (ProgressBar) findViewById(R.id.progress);
 
 
-
-
         if(hasPermissions(this , PERMISSIONS))
         {
             startApp();

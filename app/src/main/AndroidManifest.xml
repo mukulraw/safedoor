@@ -104,7 +104,9 @@
         <activity android:name=".NewNotification" />
         <activity android:name=".RegularNotification" />
         <activity android:name=".DeveloperFeedback" />
-        <activity android:name=".AddStaff"></activity>
+        <activity android:name=".AddStaff" />
+        <activity android:name=".SplashLogin.Terms" />
+        <activity android:name=".SplashLogin.privacy"></activity>
     </application>
 
 </manifest>

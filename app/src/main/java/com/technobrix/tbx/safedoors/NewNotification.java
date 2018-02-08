@@ -230,6 +230,7 @@ public class NewNotification extends AppCompatActivity {
             holder.time.setText(item.getIntime());
 
             holder.visitor.setText(item.getVisitorName());
+            holder.car.setText(item.getCarNo());
 
             holder.house.setText(item.getHouseNo());
 
@@ -256,6 +257,34 @@ public class NewNotification extends AppCompatActivity {
 
                 }
             });
+
+
+            final DisplayImageOptions imageOptions1 = new DisplayImageOptions.Builder().cacheInMemory(true).cacheOnDisk(true).resetViewBeforeLoading(false).build();
+            final ImageLoader loader1 = ImageLoader.getInstance();
+
+            loader1.displayImage(item.getPic1(), holder.imageView1, imageOptions1);
+
+
+            holder.imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    Dialog dialog = new Dialog(context);
+                    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                    dialog.setContentView(R.layout.image_dialog);
+                    dialog.setCancelable(true);
+                    dialog.show();
+
+
+                    ImageView im = dialog.findViewById(R.id.image);
+                    loader1.displayImage(item.getPic1(), im, imageOptions1);
+
+                }
+            });
+
+
+
+
 
 
             if (Objects.equals(item.getStatus(), "0")) {
@@ -345,22 +374,24 @@ public class NewNotification extends AppCompatActivity {
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
 
-            TextView time, visitor, house, comment, date;
+            TextView time, visitor, house, comment, date , car;
             ImageButton out;
 
-            CircleImageView imageView;
+            CircleImageView imageView , imageView1;
 
             public MyViewHolder(View itemView) {
                 super(itemView);
 
 
                 time = (TextView) itemView.findViewById(R.id.time);
+                car = (TextView) itemView.findViewById(R.id.car);
                 visitor = (TextView) itemView.findViewById(R.id.visitor);
                 house = (TextView) itemView.findViewById(R.id.house);
                 comment = (TextView) itemView.findViewById(R.id.comment);
                 out = (ImageButton) itemView.findViewById(R.id.out);
                 date = (TextView) itemView.findViewById(R.id.date);
                 imageView = (CircleImageView) itemView.findViewById(R.id.image);
+                imageView1 = (CircleImageView) itemView.findViewById(R.id.image2);
             }
         }
     }

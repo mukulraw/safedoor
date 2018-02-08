@@ -377,7 +377,7 @@ public class PlusVisitor extends AppCompatActivity {
                                 bean b = (bean) getApplicationContext();
 
                                 AllApiInterface cr = retrofit.create(AllApiInterface.class);
-                                Call<entryBean> call = cr.regularNew(b.socity, pur, b.userId, "New", n, houId, body , body1);
+                                Call<entryBean> call = cr.regularNew(b.socity, pur, b.userId, "New", n, houId, body , body1 , c);
 
 
                                 call.enqueue(new Callback<entryBean>() {
@@ -665,7 +665,7 @@ public class PlusVisitor extends AppCompatActivity {
         }
         return null;
     }
-    @Override
+    /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu , menu);
@@ -688,7 +688,7 @@ public class PlusVisitor extends AppCompatActivity {
 
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
 
 }

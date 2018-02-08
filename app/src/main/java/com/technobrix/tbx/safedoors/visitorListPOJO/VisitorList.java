@@ -48,6 +48,9 @@ public class VisitorList {
     @SerializedName("house_id")
     @Expose
     private String houseId;
+    @SerializedName("car_no")
+    @Expose
+    private String carNo;
     @SerializedName("house_no")
     @Expose
     private String houseNo;
@@ -160,6 +163,14 @@ public class VisitorList {
 
     public void setHouseId(String houseId) {
         this.houseId = houseId;
+    }
+
+    public String getCarNo() {
+        return carNo;
+    }
+
+    public void setCarNo(String carNo) {
+        this.carNo = carNo;
     }
 
     public String getHouseNo() {

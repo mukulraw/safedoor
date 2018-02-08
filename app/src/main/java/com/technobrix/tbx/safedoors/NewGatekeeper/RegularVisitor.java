@@ -23,6 +23,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -437,6 +438,8 @@ public class RegularVisitor extends AppCompatActivity {
             holder.name.setText(item.getStaffName());
             holder.phone.setText(item.getPhone());
             holder.profess.setText(item.getProfesstion());
+            holder.close.setVisibility(View.GONE);
+
 
 
             if (Objects.equals(item.getStaffStaus(), "In")) {
@@ -610,6 +613,7 @@ public class RegularVisitor extends AppCompatActivity {
 
             TextView name, profess, phone;
             ImageButton out;
+            ImageView close;
 
 
             public MyViewHolder(View itemView) {
@@ -619,6 +623,7 @@ public class RegularVisitor extends AppCompatActivity {
                 profess = itemView.findViewById(R.id.professional);
                 phone = itemView.findViewById(R.id.phone);
                 out = itemView.findViewById(R.id.out);
+                close = itemView.findViewById(R.id.close);
 
             }
         }

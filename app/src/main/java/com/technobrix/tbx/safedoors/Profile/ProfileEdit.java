@@ -224,7 +224,7 @@ public class ProfileEdit extends AppCompatActivity {
 
                     AllApiInterface cr = retrofit.create(AllApiInterface.class);
 
-                    Call<SetProfileBean> call = cr.setprofile(b.userId , b.socity , g , dd.getText().toString() , aa , a ,pa , f);
+                    Call<SetProfileBean> call = cr.setprofile(b.userId , b.socity , g , dd.getText().toString() , aa , a ,pa ,b.house_id, f);
 
                     Log.d("dfjgjkd" , b.userId);
                     Log.d("nfldhb" , b.socity);
