@@ -134,7 +134,8 @@ public class Splash extends AppCompatActivity {
 
 
 
-            if (email.length()>0 && pass.length()>0)
+            //if (email.length()>0 && pass.length()>0)
+            if (false)
             {
 
                 bar.setVisibility(View.VISIBLE);

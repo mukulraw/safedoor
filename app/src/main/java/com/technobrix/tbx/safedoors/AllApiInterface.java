@@ -7,7 +7,6 @@ import com.technobrix.tbx.safedoors.AddVehiclePOJO.AddBean;
 import com.technobrix.tbx.safedoors.AllMemeberPOJO.MemberBean;
 import com.technobrix.tbx.safedoors.BookFacilityPOJO.BookBean;
 import com.technobrix.tbx.safedoors.BookPOJO.BookingBean;
-import com.technobrix.tbx.safedoors.CategoryPOJO.CategoryBean;
 import com.technobrix.tbx.safedoors.CommentListPOJO.CommentsBean;
 import com.technobrix.tbx.safedoors.Create_MeetingPOJO.CreateBean;
 import com.technobrix.tbx.safedoors.DeleteFamily.DeleteFamilyBean;
@@ -279,12 +278,12 @@ public interface AllApiInterface {
              @Part("vehical_type") String vt
             );
 
-    @Multipart
+    /*@Multipart
     @POST("app_api/vehical_category.php")
     Call<CategoryBean> category
             (
                     @Part("socity_id") String hno
-            );
+            );*/
 
 
 

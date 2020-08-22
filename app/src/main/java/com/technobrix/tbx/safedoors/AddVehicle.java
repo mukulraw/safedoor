@@ -15,7 +15,6 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.technobrix.tbx.safedoors.AddFamilyPOJO.AddFamilyBean;
-import com.technobrix.tbx.safedoors.CategoryPOJO.CategoryBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +45,7 @@ public class AddVehicle extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_vehicle);
+        /*setContentView(R.layout.activity_add_vehicle);
 
         cd = new ConnectionDetector(AddVehicle.this);
 
@@ -239,6 +238,6 @@ public class AddVehicle extends AppCompatActivity {
 
 
             }
-        });
+        });*/
     }
 }

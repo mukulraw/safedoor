@@ -2,54 +2,49 @@ package com.technobrix.tbx.safedoors;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
+import android.net.Network;
+import android.net.NetworkCapabilities;
 import android.net.NetworkInfo;
+import android.os.Build;
 
 public class ConnectionDetector {
 
+    private Network network;
     private Context _context;
-    private static ConnectionDetector connectionDetector = null;
-
-    public static ConnectionDetector getinstance() {
-        if (connectionDetector == null) {
-            connectionDetector = new ConnectionDetector();
-        }
-        return connectionDetector;
+    public ConnectionDetector(Context context) {
+        this._context = context;
     }
-
-    public static boolean isConnectingToInternet(Context mContext) {
-        ConnectivityManager connectivity = (ConnectivityManager) mContext
-                .getSystemService(Context.CONNECTIVITY_SERVICE);
-        if (connectivity != null) {
-            NetworkInfo[] info = connectivity.getAllNetworkInfo();
-            if (info != null)
-                for (int i = 0; i < info.length; i++)
-                    if (info[i].getState() == NetworkInfo.State.CONNECTED) {
-                        return true;
-                    }
-
+    public boolean isConnectingToInternet() {
+        ConnectivityManager connectivity =
+                (ConnectivityManager) _context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkCapabilities capabilities = null;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            network = connectivity.getActiveNetwork();
+            capabilities = connectivity
+                    .getNetworkCapabilities(network);
+            return capabilities != null
+                    && capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_VALIDATED);
+        }
+        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.LOLLIPOP) {
+            Network[] networks = connectivity.getAllNetworks();
+            NetworkInfo networkInfo;
+            for (Network mNetwork : networks) {
+                networkInfo = connectivity.getNetworkInfo(mNetwork);
+                if (networkInfo.getState().equals(NetworkInfo.State.CONNECTED)) {
+                    return true;
+                }
+            }
+        } else {
+            if (connectivity != null) {
+                NetworkInfo[] info = connectivity.getAllNetworkInfo();
+                if (info != null)
+                    for (int i = 0; i < info.length; i++)
+                        if (info[i].getState() == NetworkInfo.State.CONNECTED) {
+                            return true;
+                        }
+            }
         }
         return false;
-    }
-
-    public static boolean checkNetworkAvailablity(Context mContext) {
-        try {
-
-            ConnectivityManager cMgr = (ConnectivityManager) mContext
-                    .getSystemService(Context.CONNECTIVITY_SERVICE);
-
-            NetworkInfo netInfo = cMgr.getActiveNetworkInfo();
-
-            return netInfo != null;
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-//            throw new NetConnectException(
-//                    NetConnectException.NO_NETWORK_EXCEPTION,
-//                    NetConnectException.TYPE_CONNECTION,
-//                    NetConnectException.NO_NETWORK_CONNECTION);
-
-        }
     }
 
 }
