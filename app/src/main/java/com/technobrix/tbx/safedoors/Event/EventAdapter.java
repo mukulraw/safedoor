@@ -2,8 +2,8 @@ package com.technobrix.tbx.safedoors.Event;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +13,7 @@ import android.widget.TextView;
 import com.technobrix.tbx.safedoors.AllApiInterface;
 import com.technobrix.tbx.safedoors.BuyTicket;
 import com.technobrix.tbx.safedoors.EventBookPOJO.EventBookBean;
-import com.technobrix.tbx.safedoors.EventDatePOJO.EventBean;
 import com.technobrix.tbx.safedoors.EventDatePOJO.MeetingList;
-import com.technobrix.tbx.safedoors.MeetingArragemenmt.Meeting;
 import com.technobrix.tbx.safedoors.R;
 import com.technobrix.tbx.safedoors.bean;
 

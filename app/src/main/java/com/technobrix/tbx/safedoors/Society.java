@@ -1,10 +1,10 @@
 package com.technobrix.tbx.safedoors;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.technobrix.tbx.safedoors.EventDatePOJO.EventBean;
 import com.technobrix.tbx.safedoors.GetHelpPOJO.HelpBean;
 import com.technobrix.tbx.safedoors.GetHelpPOJO.HelpList;
 

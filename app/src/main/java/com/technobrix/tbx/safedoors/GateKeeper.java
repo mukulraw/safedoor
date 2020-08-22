@@ -1,7 +1,5 @@
 package com.technobrix.tbx.safedoors;
 
-import android.app.Activity;
-import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
@@ -13,10 +11,9 @@ import android.os.Build;
 import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
-import android.support.v4.content.FileProvider;
-import android.support.v7.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -31,7 +28,6 @@ import android.widget.Toast;
 import com.technobrix.tbx.safedoors.AllMemeberPOJO.MemberBean;
 import com.technobrix.tbx.safedoors.ProfilePOJO.SetFamilyBean;
 import com.technobrix.tbx.safedoors.SplashLogin.Login;
-import com.technobrix.tbx.safedoors.SplashLogin.Register;
 
 import java.io.File;
 import java.io.IOException;

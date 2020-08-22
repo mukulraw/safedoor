@@ -1,10 +1,9 @@
 package com.technobrix.tbx.safedoors.Profile;
 
-import android.content.Intent;
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -13,14 +12,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.technobrix.tbx.safedoors.AllApiInterface;
 import com.technobrix.tbx.safedoors.DeleteFamily.DeleteFamilyBean;
-import com.technobrix.tbx.safedoors.EventDatePOJO.EventBean;
-import com.technobrix.tbx.safedoors.MainActivity;
-import com.technobrix.tbx.safedoors.Notification;
 import com.technobrix.tbx.safedoors.R;
 import com.technobrix.tbx.safedoors.SetFamilyPOJO.SetFamilyBean;
 import com.technobrix.tbx.safedoors.bean;

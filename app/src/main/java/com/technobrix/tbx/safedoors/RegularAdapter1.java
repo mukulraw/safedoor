@@ -1,27 +1,19 @@
 package com.technobrix.tbx.safedoors;
 
 import android.content.Context;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.technobrix.tbx.safedoors.visitorListPOJO.VisitorList;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 /**
  * Created by USER on 18-01-2018.

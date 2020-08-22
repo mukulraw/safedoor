@@ -2,12 +2,10 @@ package com.technobrix.tbx.safedoors.MeetingArragemenmt;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.media.Image;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -24,13 +21,8 @@ import android.widget.Toast;
 
 import com.technobrix.tbx.safedoors.AllApiInterface;
 import com.technobrix.tbx.safedoors.Create_MeetingPOJO.CreateBean;
-import com.technobrix.tbx.safedoors.LoginPOJO.LoginBean;
-import com.technobrix.tbx.safedoors.MainActivity;
-import com.technobrix.tbx.safedoors.MeetingPOJO.MeetingBean;
 import com.technobrix.tbx.safedoors.R;
 import com.technobrix.tbx.safedoors.bean;
-
-import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;

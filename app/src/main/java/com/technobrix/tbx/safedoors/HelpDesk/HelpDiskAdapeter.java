@@ -2,7 +2,7 @@ package com.technobrix.tbx.safedoors.HelpDesk;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.technobrix.tbx.safedoors.DisscusionPOJO.MemberList;
 import com.technobrix.tbx.safedoors.R;
 import com.technobrix.tbx.safedoors.TopicListPOJO.TopicList;
 

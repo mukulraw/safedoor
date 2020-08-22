@@ -14,7 +14,7 @@ import android.util.AttributeSet;
 
 
 
-class RoundedImageView extends android.support.v7.widget.AppCompatImageView {
+class RoundedImageView extends androidx.appcompat.widget.AppCompatImageView {
     public RoundedImageView(Context ctx, AttributeSet attrs) {
         super(ctx, attrs);
     }

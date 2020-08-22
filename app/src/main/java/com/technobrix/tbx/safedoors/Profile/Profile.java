@@ -12,13 +12,13 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.ViewPager;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import com.google.android.material.tabs.TabLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,18 +33,14 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.technobrix.tbx.safedoors.AllApiInterface;
 import com.technobrix.tbx.safedoors.ConnectionDetector;
-import com.technobrix.tbx.safedoors.FacilityPOJO.Bean;
-import com.technobrix.tbx.safedoors.FamilyPOJO.FamilyBean;
 import com.technobrix.tbx.safedoors.GetImagePOJO.GetBean;
 import com.technobrix.tbx.safedoors.GetProfilePOJO.GetProfileBean;
-import com.technobrix.tbx.safedoors.ProfilePOJO.SetProfileBean;
 import com.technobrix.tbx.safedoors.R;
 
 import com.technobrix.tbx.safedoors.UpdateProfilePOJO.UpdateBean;
 import com.technobrix.tbx.safedoors.bean;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -58,7 +54,6 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
-import retrofit2.http.Part;
 
 import static android.app.Activity.RESULT_OK;
 

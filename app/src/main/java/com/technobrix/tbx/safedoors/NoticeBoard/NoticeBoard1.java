@@ -1,15 +1,14 @@
 package com.technobrix.tbx.safedoors.NoticeBoard;
 
-import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,17 +18,14 @@ import android.widget.Toast;
 
 import com.technobrix.tbx.safedoors.AllApiInterface;
 import com.technobrix.tbx.safedoors.ConnectionDetector;
-import com.technobrix.tbx.safedoors.LoginPOJO.LoginBean;
 import com.technobrix.tbx.safedoors.MainActivity;
 import com.technobrix.tbx.safedoors.NoticeListPOJO.NoticeBean;
 import com.technobrix.tbx.safedoors.NoticeListPOJO.NoticeList;
 import com.technobrix.tbx.safedoors.R;
 import com.technobrix.tbx.safedoors.bean;
 
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;

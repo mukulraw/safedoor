@@ -1,12 +1,11 @@
 package com.technobrix.tbx.safedoors.Profile;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,7 +13,6 @@ import com.technobrix.tbx.safedoors.AddFamilyPOJO.AddFamilyBean;
 import com.technobrix.tbx.safedoors.AllApiInterface;
 import com.technobrix.tbx.safedoors.GetVehiclePOJO.VehicleList;
 import com.technobrix.tbx.safedoors.R;
-import com.technobrix.tbx.safedoors.RemovePOJO.RemoveBean;
 import com.technobrix.tbx.safedoors.bean;
 
 import java.util.ArrayList;

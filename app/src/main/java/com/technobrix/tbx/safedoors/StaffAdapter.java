@@ -1,11 +1,5 @@
 package com.technobrix.tbx.safedoors;
 
-import android.content.Context;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 /**
  * Created by USER on 02-02-2018.
  */

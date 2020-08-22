@@ -1,11 +1,8 @@
 package com.technobrix.tbx.safedoors.NewGatekeeper;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
-
-import com.technobrix.tbx.safedoors.Emergency;
-import com.technobrix.tbx.safedoors.Society;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 
 /**
  * Created by tvs on 10/26/2017.

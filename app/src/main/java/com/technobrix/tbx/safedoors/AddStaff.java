@@ -2,26 +2,22 @@ package com.technobrix.tbx.safedoors;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.technobrix.tbx.safedoors.BookPOJO.BookingBean;
 import com.technobrix.tbx.safedoors.DeletePOJO.DeleteBean;
 import com.technobrix.tbx.safedoors.StaffListPOJO.StaffList;
 import com.technobrix.tbx.safedoors.StaffListPOJO.staffListBean;
-import com.technobrix.tbx.safedoors.StaffPOJO.StaffBean;
 
 import java.util.ArrayList;
 import java.util.List;

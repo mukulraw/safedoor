@@ -2,11 +2,11 @@ package com.technobrix.tbx.safedoors.Profile;
 
 import android.app.Dialog;
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DialogTitle;
-import android.support.v7.widget.LinearLayoutCompat;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.widget.DialogTitle;
+import androidx.appcompat.widget.LinearLayoutCompat;
+import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -24,7 +24,6 @@ import com.technobrix.tbx.safedoors.AllApiInterface;
 import com.technobrix.tbx.safedoors.ConnectionDetector;
 import com.technobrix.tbx.safedoors.ProfilePOJO.SetProfileBean;
 import com.technobrix.tbx.safedoors.R;
-import com.technobrix.tbx.safedoors.SplashLogin.Register;
 import com.technobrix.tbx.safedoors.bean;
 
 import java.util.ArrayList;

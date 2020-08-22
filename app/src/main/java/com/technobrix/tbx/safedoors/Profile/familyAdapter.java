@@ -3,29 +3,17 @@ package com.technobrix.tbx.safedoors.Profile;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.technobrix.tbx.safedoors.AllApiInterface;
-import com.technobrix.tbx.safedoors.FacilityPOJO.FacilityList;
-
 import com.technobrix.tbx.safedoors.GetFamilyPOJO.FamiltList;
-import com.technobrix.tbx.safedoors.GetVehiclePOJO.VehicleBean;
 import com.technobrix.tbx.safedoors.R;
-import com.technobrix.tbx.safedoors.RemovePOJO.RemoveBean;
-import com.technobrix.tbx.safedoors.bean;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 
 public class familyAdapter extends RecyclerView.Adapter<familyAdapter.myviewholder>{
